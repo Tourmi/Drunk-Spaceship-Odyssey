@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PathList" load_steps=3 format=3 uid="uid://1squaxyf20uo"]
+
+[ext_resource type="Script" path="res://scripts/resources/path_list.gd" id="1_76wfl"]
+
+[sub_resource type="Curve2D" id="Curve2D_q1cd7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 233, 80, 50, 0, -50, 0, 160, 50, 0, 0, 0, 0, 85, 80, -50, 0, 50, 0, 160, 110, 0, 0, 0, 0, 233, 78)
+}
+point_count = 5
+
+[resource]
+script = ExtResource("1_76wfl")
+path_list = Array[Curve2D]([SubResource("Curve2D_q1cd7")])

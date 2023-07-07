@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EnemyList" load_steps=2 format=3 uid="uid://cnmjukij70y8j"]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_list.gd" id="1_3st3x"]
+
+[resource]
+script = ExtResource("1_3st3x")
+enemies = Array[PackedScene]([])

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cf7nijfhekhb2" path="res://scenes/characters/enemies/grunt.tscn" id="2_kib1p"]
 
 [node name="SpawnButton" type="Button"]
-text = "Grunt"
+text = "grunt"
 script = ExtResource("1_x3p6m")
 enemyToSpawn = ExtResource("2_kib1p")
 

@@ -3,4 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_qilv3"]
 
 [node name="Enemy" instance=ExtResource("1_qilv3")]
-enemyName = "Grunt"
+enemy_name = "grunt"
+speed = 20.0

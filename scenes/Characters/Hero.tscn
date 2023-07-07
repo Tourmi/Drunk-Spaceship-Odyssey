@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3nf17l55ya4t"]
+[gd_scene load_steps=10 format=3 uid="uid://b3nf17l55ya4t"]
 
 [ext_resource type="Texture2D" uid="uid://c6aurht8hfrn4" path="res://assets/icon.svg" id="1_b40xi"]
 [ext_resource type="Script" path="res://scenes/characters/hero.gd" id="1_q5ie8"]
@@ -13,16 +13,16 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejloc"]
 radius = 4.0
 
-[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("shooter_component", "health_component")]
-collision_mask = 6
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdqjg"]
+radius = 20.0
+
+[node name="Hero" type="CharacterBody2D"]
+collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_q5ie8")
-shooter_component = NodePath("Shooter_Component")
-health_component = NodePath("Health_Component")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3jy3i")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0.0156863, 1)
@@ -50,5 +50,12 @@ is_hero = true
 [node name="DeathComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("6_1j2c6")
 health_component = NodePath("../Health_Component")
+
+[node name="AvoidanceArea" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidanceArea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_bdqjg")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
