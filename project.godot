@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="GMTK2023"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 boot_splash/bg_color=Color(0.027451, 0.0470588, 0.0784314, 1)
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Globals="*res://scripts/Globals.gd"
+Globals="*res://scripts/globals.gd"
 
 [display]
 

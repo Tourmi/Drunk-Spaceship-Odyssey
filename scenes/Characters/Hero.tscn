@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://b3nf17l55ya4t"]
 
 [ext_resource type="Texture2D" uid="uid://c6aurht8hfrn4" path="res://assets/icon.svg" id="1_b40xi"]
-[ext_resource type="Script" path="res://scenes/Characters/Hero.gd" id="1_q5ie8"]
-[ext_resource type="Script" path="res://scripts/health_component.gd" id="3_1w40q"]
-[ext_resource type="Script" path="res://scripts/shooter_component.gd" id="4_fn518"]
-[ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/Bullets/Bullet.tscn" id="5_sgdxy"]
+[ext_resource type="Script" path="res://scenes/characters/hero.gd" id="1_q5ie8"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_1w40q"]
+[ext_resource type="Script" path="res://scripts/components/shooter_component.gd" id="4_fn518"]
+[ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/bullets/bullet.tscn" id="5_sgdxy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jy3i"]
 radius = 7.0

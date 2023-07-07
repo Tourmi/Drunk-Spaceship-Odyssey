@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://8uikrl1k17ve"]
 
-[ext_resource type="Script" path="res://scenes/Characters/Enemy.gd" id="1_56mee"]
+[ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_56mee"]
 [ext_resource type="Texture2D" uid="uid://djegtw2p4ix8o" path="res://assets/peeceshipt.png" id="2_iku7c"]
-[ext_resource type="Script" path="res://scripts/enemy_ai_component.gd" id="3_311je"]
-[ext_resource type="Script" path="res://scripts/health_component.gd" id="4_5xjrc"]
-[ext_resource type="Script" path="res://scripts/shooter_component.gd" id="5_ss1pt"]
-[ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/Bullets/Bullet.tscn" id="6_ooec5"]
+[ext_resource type="Script" path="res://scripts/components/enemy_ai_component.gd" id="3_311je"]
+[ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_5xjrc"]
+[ext_resource type="Script" path="res://scripts/components/shooter_component.gd" id="5_ss1pt"]
+[ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/bullets/bullet.tscn" id="6_ooec5"]
 
 [node name="Enemy" type="PathFollow2D"]
 script = ExtResource("1_56mee")
