@@ -1,0 +1,7 @@
+ROLES REVERSED
+
+- Bullet hell where you spawn enemies
+  - Strategy
+- You're the cosmic clone
+  - Satisfying controls
+
