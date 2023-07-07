@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c70l28kl2we5q"]
+[gd_scene load_steps=3 format=3 uid="uid://c70l28kl2we5q"]
+
+[ext_resource type="PackedScene" uid="uid://dqxju1ulw2ldk" path="res://scenes/UI/SpawnButton.tscn" id="1_81mvk"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ksrw"]
 size = Vector2(100, 180)
 
-[node name="RightPanel" type="GridContainer"]
+[node name="PanelContainer" type="PanelContainer"]
 offset_right = 100.0
 offset_bottom = 180.0
 
@@ -11,3 +13,16 @@ offset_bottom = 180.0
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_4ksrw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SpawnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_81mvk")]
+layout_mode = 2

@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3nf17l55ya4t"]
+
+[ext_resource type="Texture2D" uid="uid://c6aurht8hfrn4" path="res://assets/icon.svg" id="1_b40xi"]
+[ext_resource type="Script" path="res://scenes/Characters/Hero.gd" id="1_q5ie8"]
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="3_1w40q"]
+[ext_resource type="Script" path="res://scripts/shooter_component.gd" id="4_fn518"]
+[ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/Bullets/Bullet.tscn" id="5_sgdxy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jy3i"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejloc"]
+radius = 4.0
+
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("shooter_component")]
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_q5ie8")
+shooter_component = NodePath("Shooter_Component")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3jy3i")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.0156863, 1)
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.0820313, 0.0859375)
+texture = ExtResource("1_b40xi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ejloc")
+
+[node name="Health_Component" type="Node" parent="."]
+script = ExtResource("3_1w40q")
+
+[node name="Shooter_Component" type="Node2D" parent="."]
+position = Vector2(0, -7)
+script = ExtResource("4_fn518")
+bullet_to_spawn = ExtResource("5_sgdxy")

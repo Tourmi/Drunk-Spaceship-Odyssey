@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://wjvxpan3jpey"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ksrw"]
+size = Vector2(100, 180)
+
+[node name="LeftPanel" type="GridContainer"]
+offset_right = 100.0
+offset_bottom = 180.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_4ksrw")

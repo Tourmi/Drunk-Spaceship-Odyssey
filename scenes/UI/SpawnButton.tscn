@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqxju1ulw2ldk"]
+
+[ext_resource type="Script" path="res://scenes/UI/SpawnButton.gd" id="1_x3p6m"]
+[ext_resource type="PackedScene" uid="uid://cf7nijfhekhb2" path="res://scenes/Characters/Enemies/grunt.tscn" id="2_kib1p"]
+
+[node name="SpawnButton" type="Button"]
+text = "default"
+script = ExtResource("1_x3p6m")
+enemyToSpawn = ExtResource("2_kib1p")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
