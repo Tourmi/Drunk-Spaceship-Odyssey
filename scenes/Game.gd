@@ -1,4 +1,5 @@
 extends Node2D
 
 func _ready() -> void:
-	Globals.spawnPath = $TempSpawnPath as Path2D
+	Globals.spawn_path = $TempSpawnPath as Path2D
+	Globals.bullet_spawn = $Bullets as Node

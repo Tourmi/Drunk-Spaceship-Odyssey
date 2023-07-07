@@ -2,6 +2,7 @@ class_name Hero
 extends CharacterBody2D
 
 @export var shooter_component : Shooter_Component
+@export var health_component : Health_Component
 
 @export var speed := 30.0
 @export var firerate := 2.0
@@ -26,3 +27,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not body is Bullet or (body as Bullet).is_hero:
+		return
+	body.queue_free()
+	health_component.current_health -= 1

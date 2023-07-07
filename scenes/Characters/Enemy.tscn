@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8uikrl1k17ve"]
+[gd_scene load_steps=9 format=3 uid="uid://8uikrl1k17ve"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_56mee"]
 [ext_resource type="Texture2D" uid="uid://djegtw2p4ix8o" path="res://assets/peeceshipt.png" id="2_iku7c"]
@@ -6,9 +6,14 @@
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_5xjrc"]
 [ext_resource type="Script" path="res://scripts/components/shooter_component.gd" id="5_ss1pt"]
 [ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/bullets/bullet.tscn" id="6_ooec5"]
+[ext_resource type="Script" path="res://scripts/components/death_component.gd" id="7_mieof"]
 
-[node name="Enemy" type="PathFollow2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_34bpp"]
+radius = 4.0
+
+[node name="Enemy" type="PathFollow2D" node_paths=PackedStringArray("health_component")]
 script = ExtResource("1_56mee")
+health_component = NodePath("Health_Component")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -31,3 +36,16 @@ current_health = 1
 position = Vector2(4, 0)
 script = ExtResource("5_ss1pt")
 bullet_to_spawn = ExtResource("6_ooec5")
+
+[node name="DeathComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("7_mieof")
+health_component = NodePath("../Health_Component")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_34bpp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
