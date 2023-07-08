@@ -8,6 +8,21 @@
 [ext_resource type="Script" path="res://scenes/wave_spawner.gd" id="5_d4cyb"]
 [ext_resource type="PackedScene" uid="uid://cj4kordkry1pi" path="res://scenes/obstacles/walls.tscn" id="6_2tn3r"]
 
+[sub_resource type="Animation" id="Animation_bc7wf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_kxrlm"]
 resource_name = "regular"
 length = 0.8
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_bc7wf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8q5e"]
@@ -94,7 +94,5 @@ script = ExtResource("5_d4cyb")
 position = Vector2(166, 158)
 
 [node name="RightPanel" parent="." instance=ExtResource("1_ric2v")]
-offset_right = 960.0
-offset_bottom = 360.0
 
 [node name="LeftPanel" parent="." instance=ExtResource("3_j66l3")]

@@ -7,7 +7,6 @@
 [node name="demo" type="Node2D"]
 
 [node name="PanelContainer" parent="." instance=ExtResource("1_8006d")]
-offset_right = 260.0
 
 [node name="LeftPanel" parent="." instance=ExtResource("2_ndlji")]
 

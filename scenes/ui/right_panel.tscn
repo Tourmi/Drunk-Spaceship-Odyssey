@@ -116,6 +116,6 @@ libraries = {
 next/steam = &"regular"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" to="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@223168" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@223168" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@223169" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@223169" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@223170" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@223170" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@21770" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@21770" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@21771" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@21771" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@21772" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@21772" method="_on_pressed" flags=18]

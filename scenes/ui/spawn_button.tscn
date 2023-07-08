@@ -1,18 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqxju1ulw2ldk"]
+[gd_scene load_steps=4 format=3 uid="uid://dqxju1ulw2ldk"]
 
-[ext_resource type="Texture2D" uid="uid://djegtw2p4ix8o" path="res://assets/peeceshipt.png" id="1_85cv1"]
+[ext_resource type="Texture2D" uid="uid://3v66sdewtjl7" path="res://resources/atlases/grunt_atlas.tres" id="1_pvweh"]
 [ext_resource type="Script" path="res://scenes/ui/spawn_button.gd" id="1_x3p6m"]
 [ext_resource type="Resource" uid="uid://ulfpoqj4exia" path="res://resources/waves/grunt_wave.tres" id="2_d4srn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sefkq"]
-atlas = ExtResource("1_85cv1")
-region = Rect2(0, 0, 8, 8)
 
 [node name="SpawnButton" type="Button"]
 texture_filter = 1
 offset_right = 16.0
 offset_bottom = 16.0
-icon = SubResource("AtlasTexture_sefkq")
+icon = ExtResource("1_pvweh")
 icon_alignment = 1
 script = ExtResource("1_x3p6m")
 wave = ExtResource("2_d4srn")
