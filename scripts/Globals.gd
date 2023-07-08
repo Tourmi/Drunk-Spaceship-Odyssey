@@ -1,5 +1,5 @@
 extends Node
 
-var spawn_path : Path2D
+var spawner : WaveSpawner
 var bullet_spawn : Node
 var hero : Hero

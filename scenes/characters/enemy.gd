@@ -6,6 +6,8 @@ extends PathFollow2D
 @export var speed := 10.0
 @export var look_down := false
 
+@onready var sprite := %Sprite as Sprite2D
+
 func _ready() -> void:
 	self.rotates = not look_down
 	if look_down: self.rotation = TAU / 4

@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf7nijfhekhb2"]
+[gd_scene load_steps=5 format=3 uid="uid://cf7nijfhekhb2"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_qilv3"]
+
+[sub_resource type="Animation" id="Animation_x338m"]
+resource_name = "regular"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_itb2o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5g0el"]
+_data = {
+"RESET": SubResource("Animation_itb2o"),
+"regular": SubResource("Animation_x338m")
+}
 
 [node name="Enemy" instance=ExtResource("1_qilv3")]
 enemy_name = "grunt"
@@ -9,3 +46,15 @@ speed = 40.0
 [node name="Health_Component" parent="." index="2"]
 max_health = 50
 current_health = 50
+
+[node name="Shooter_Component" parent="." index="3"]
+min_speed = 15.0
+max_speed = 25.0
+count = 2
+
+[node name="AnimationPlayer" parent="." index="6"]
+autoplay = "regular"
+speed_scale = 4.0
+libraries = {
+"": SubResource("AnimationLibrary_5g0el")
+}

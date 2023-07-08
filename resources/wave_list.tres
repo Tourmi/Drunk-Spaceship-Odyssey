@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WaveList" load_steps=5 format=3 uid="uid://cwx8favobo0pa"]
+
+[ext_resource type="Script" path="res://scripts/resources/wave_list.gd" id="1_mo706"]
+[ext_resource type="Resource" uid="uid://ulfpoqj4exia" path="res://resources/waves/grunt_wave.tres" id="2_u8vmg"]
+[ext_resource type="Resource" uid="uid://dm4h83sqpyt63" path="res://resources/waves/charger_wave.tres" id="3_wg3nw"]
+[ext_resource type="Resource" uid="uid://dt8ircigv56qb" path="res://resources/waves/general_angelion.tres" id="4_76vhj"]
+
+[resource]
+script = ExtResource("1_mo706")
+waves = Array[Resource("res://scripts/resources/wave.gd")]([ExtResource("2_u8vmg"), ExtResource("3_wg3nw"), ExtResource("4_76vhj"), ExtResource("3_wg3nw")])

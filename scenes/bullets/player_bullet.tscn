@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwqe4rg0veby0"]
+[gd_scene load_steps=3 format=3 uid="uid://cwqe4rg0veby0"]
 
 [ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/bullets/bullet.tscn" id="1_mbmds"]
+[ext_resource type="Texture2D" uid="uid://dqjdm0ftxefuo" path="res://assets/heromcbadguybullet.png" id="2_bw3rx"]
 
 [node name="Bullet" instance=ExtResource("1_mbmds")]
-speed = 25.0
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_bw3rx")

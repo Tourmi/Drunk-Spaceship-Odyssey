@@ -17,6 +17,7 @@ radius = 25.0
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_q5ie8")
+firerate = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -36,14 +37,16 @@ polygon = PackedVector2Array(0, -7, -7, 6, 7, 6)
 
 [node name="Health_Component" type="Node" parent="."]
 script = ExtResource("3_1w40q")
-max_health = 300
-current_health = 300
+max_health = 500
+current_health = 500
 
 [node name="Shooter_Component" type="Node2D" parent="."]
 position = Vector2(0, -7)
 script = ExtResource("4_fn518")
 bullet_to_spawn = ExtResource("5_mt37e")
 is_hero = true
+min_speed = 20.0
+max_speed = 30.0
 
 [node name="DeathComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("6_1j2c6")

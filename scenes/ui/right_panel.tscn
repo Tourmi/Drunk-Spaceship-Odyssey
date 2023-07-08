@@ -1,33 +1,105 @@
-[gd_scene load_steps=6 format=3 uid="uid://c70l28kl2we5q"]
+[gd_scene load_steps=10 format=3 uid="uid://c70l28kl2we5q"]
 
 [ext_resource type="PackedScene" uid="uid://dqxju1ulw2ldk" path="res://scenes/ui/spawn_button.tscn" id="1_81mvk"]
 [ext_resource type="Script" path="res://scenes/ui/right_panel.gd" id="1_osc8y"]
-[ext_resource type="Resource" uid="uid://cnmjukij70y8j" path="res://resources/enemy_list.tres" id="2_rnhhw"]
-[ext_resource type="Resource" uid="uid://1squaxyf20uo" path="res://resources/path_list.tres" id="3_phgya"]
+[ext_resource type="Resource" uid="uid://cwx8favobo0pa" path="res://resources/wave_list.tres" id="2_6pui7"]
+[ext_resource type="Texture2D" uid="uid://c5jfjl4von3hq" path="res://assets/rightlayout.png" id="4_qh574"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ksrw"]
-size = Vector2(100, 180)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqlsm"]
+atlas = ExtResource("4_qh574")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="Animation" id="Animation_ya32y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 320, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_sfxld"]
+resource_name = "regular"
+length = 0.75
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 320, 180), Rect2(320, 0, 320, 180), Rect2(640, 0, 320, 180)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_attempt_steam"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_70leu"]
+resource_name = "steam"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 180, 320, 180), Rect2(320, 180, 320, 180), Rect2(640, 180, 320, 180)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4htj8"]
+_data = {
+"RESET": SubResource("Animation_ya32y"),
+"regular": SubResource("Animation_sfxld"),
+"steam": SubResource("Animation_70leu")
+}
 
 [node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("enemy_button_container")]
-offset_right = 100.0
+self_modulate = Color(0, 0, 0, 0)
+offset_right = 320.0
 offset_bottom = 180.0
 script = ExtResource("1_osc8y")
-enemy_list = ExtResource("2_rnhhw")
-path_list = ExtResource("3_phgya")
+waves = ExtResource("2_6pui7")
 spawn_enemy_button_scene = ExtResource("1_81mvk")
 enemy_button_container = NodePath("MarginContainer/VBoxContainer/EnemyButtons")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 1)
+texture_filter = 1
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_4ksrw")
+texture = SubResource("AtlasTexture_dqlsm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_left = 232
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -35,5 +107,15 @@ layout_mode = 2
 [node name="EnemyButtons" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "regular"
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_4htj8")
+}
+next/steam = &"regular"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" to="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@19587" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@19587" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@223168" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@223168" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@223169" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@223169" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@223170" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@223170" method="_on_pressed" flags=18]

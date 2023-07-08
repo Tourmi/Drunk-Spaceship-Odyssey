@@ -2,14 +2,21 @@
 class_name SpawnButton
 extends Button
 
-@export var enemyToSpawn : PackedScene
+@export var wave : Wave
+
+var curr_cooldown : float
 
 func _ready() -> void:
-	var enemy = enemyToSpawn.instantiate() as Enemy
-	self.set_text(enemy.enemy_name)
-	pass
+	icon = wave.wave_icon
+
+func _process(delta: float) -> void:
+	curr_cooldown -= delta
+	if curr_cooldown <= 0:
+		disabled = false
 
 func _on_pressed() -> void:
-	if Globals.spawn_path == null: return
-	var enemy = enemyToSpawn.instantiate() as Enemy
-	Globals.spawn_path.add_child(enemy)
+	if Globals.spawner == null: return
+	Globals.spawner.spawn_wave(wave)
+	curr_cooldown = wave.cooldown
+	disabled = true
+

@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqxju1ulw2ldk"]
+[gd_scene load_steps=5 format=3 uid="uid://dqxju1ulw2ldk"]
 
+[ext_resource type="Texture2D" uid="uid://djegtw2p4ix8o" path="res://assets/peeceshipt.png" id="1_85cv1"]
 [ext_resource type="Script" path="res://scenes/ui/spawn_button.gd" id="1_x3p6m"]
-[ext_resource type="PackedScene" uid="uid://cf7nijfhekhb2" path="res://scenes/characters/enemies/grunt.tscn" id="2_kib1p"]
+[ext_resource type="Resource" uid="uid://ulfpoqj4exia" path="res://resources/waves/grunt_wave.tres" id="2_d4srn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sefkq"]
+atlas = ExtResource("1_85cv1")
+region = Rect2(0, 0, 8, 8)
 
 [node name="SpawnButton" type="Button"]
-text = "grunt"
+texture_filter = 1
+offset_right = 16.0
+offset_bottom = 16.0
+icon = SubResource("AtlasTexture_sefkq")
+icon_alignment = 1
 script = ExtResource("1_x3p6m")
-enemyToSpawn = ExtResource("2_kib1p")
+wave = ExtResource("2_d4srn")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

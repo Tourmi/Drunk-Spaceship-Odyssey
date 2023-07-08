@@ -8,8 +8,6 @@ radius = 2.0
 height = 6.0
 
 [node name="Bullet" instance=ExtResource("1_18can")]
-speed = 45.0
-damage = 150
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_dtwwn")
@@ -17,3 +15,6 @@ shape = SubResource("CapsuleShape2D_dtwwn")
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_7yjvv")
 hframes = 1
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = ""

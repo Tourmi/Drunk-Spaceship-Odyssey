@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyList" load_steps=4 format=3 uid="uid://cnmjukij70y8j"]
-
-[ext_resource type="Script" path="res://scripts/resources/enemy_list.gd" id="1_3st3x"]
-[ext_resource type="PackedScene" uid="uid://cf7nijfhekhb2" path="res://scenes/characters/enemies/grunt.tscn" id="1_7fniy"]
-[ext_resource type="PackedScene" uid="uid://sijy754x7vq" path="res://scenes/characters/enemies/charger.tscn" id="2_6kddw"]
-
-[resource]
-script = ExtResource("1_3st3x")
-enemies = Array[PackedScene]([ExtResource("1_7fniy"), ExtResource("2_6kddw")])

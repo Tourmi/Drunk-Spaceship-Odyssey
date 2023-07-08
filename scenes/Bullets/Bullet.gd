@@ -1,8 +1,7 @@
 class_name Bullet
 extends CharacterBody2D
 
-@export var speed : float
-@export var damage : int
+var damage : int
 
 var is_hero := false
 

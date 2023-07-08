@@ -9,13 +9,14 @@
 [ext_resource type="Script" path="res://scripts/components/death_component.gd" id="7_mieof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34bpp"]
-radius = 4.0
+radius = 6.0
 
 [node name="Enemy" type="PathFollow2D" node_paths=PackedStringArray("health_component")]
 script = ExtResource("1_56mee")
 health_component = NodePath("Health_Component")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(0, 1.19209e-07)
 rotation = -1.5708
@@ -48,5 +49,7 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_34bpp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

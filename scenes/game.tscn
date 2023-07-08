@@ -1,24 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://ug4m5hagellp"]
+[gd_scene load_steps=11 format=3 uid="uid://ug4m5hagellp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_aruh1"]
 [ext_resource type="Texture2D" uid="uid://cmp3cgcchj24k" path="res://assets/bckgrindpng.png" id="1_pi6ah"]
 [ext_resource type="PackedScene" uid="uid://c70l28kl2we5q" path="res://scenes/ui/right_panel.tscn" id="1_ric2v"]
-[ext_resource type="Resource" uid="uid://cnmjukij70y8j" path="res://resources/enemy_list.tres" id="2_p8n6c"]
 [ext_resource type="PackedScene" uid="uid://wjvxpan3jpey" path="res://scenes/ui/left_panel.tscn" id="3_j66l3"]
-[ext_resource type="Resource" uid="uid://1squaxyf20uo" path="res://resources/path_list.tres" id="3_nv5iw"]
 [ext_resource type="PackedScene" uid="uid://b3nf17l55ya4t" path="res://scenes/characters/hero.tscn" id="4_4mj10"]
+[ext_resource type="Script" path="res://scenes/wave_spawner.gd" id="5_d4cyb"]
 [ext_resource type="PackedScene" uid="uid://cj4kordkry1pi" path="res://scenes/obstacles/walls.tscn" id="6_2tn3r"]
 
+[sub_resource type="Animation" id="Animation_kxrlm"]
+resource_name = "regular"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_bc7wf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8q5e"]
+_data = {
+"RESET": SubResource("Animation_bc7wf"),
+"regular": SubResource("Animation_kxrlm")
+}
+
 [node name="Game" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_aruh1")
-enemies = ExtResource("2_p8n6c")
-paths = ExtResource("3_nv5iw")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(160, 90)
 texture = ExtResource("1_pi6ah")
 hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+autoplay = "regular"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_c8q5e")
+}
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(156, -23)
@@ -41,6 +84,7 @@ texture_mode = 1
 sharp_limit = 16.0
 
 [node name="SpawnPaths" type="Node2D" parent="."]
+script = ExtResource("5_d4cyb")
 
 [node name="Bullets" type="Node2D" parent="."]
 
@@ -50,7 +94,7 @@ sharp_limit = 16.0
 position = Vector2(166, 158)
 
 [node name="RightPanel" parent="." instance=ExtResource("1_ric2v")]
-offset_left = 220.0
-offset_right = 320.0
+offset_right = 960.0
+offset_bottom = 360.0
 
 [node name="LeftPanel" parent="." instance=ExtResource("3_j66l3")]

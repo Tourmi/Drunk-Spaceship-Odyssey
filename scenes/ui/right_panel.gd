@@ -1,17 +1,21 @@
 @tool
 extends PanelContainer
 
-@export var enemy_list : EnemyList
-@export var path_list : PathList
-
+@export var waves : WaveList
 @export var spawn_enemy_button_scene : PackedScene
-
 @export var enemy_button_container : Container
 
+@onready var animation_player := $AnimationPlayer as AnimationPlayer
+
 func _ready() -> void:
-	for enemy_scene in enemy_list.enemies:
+	for wave_scene in waves.waves:
 		var button := spawn_enemy_button_scene.instantiate() as SpawnButton
-		button.enemyToSpawn = enemy_scene
+		button.wave = wave_scene
 		enemy_button_container.add_child(button)
+	size = Vector2(320, 180)
 
+func _process(delta: float) -> void:
+	pass
 
+func _attempt_steam() -> void:
+	if randf() > 0.90: animation_player.play("steam")

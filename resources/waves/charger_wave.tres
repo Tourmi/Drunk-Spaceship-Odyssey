@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=5 format=3 uid="uid://dm4h83sqpyt63"]
+
+[ext_resource type="PackedScene" uid="uid://sijy754x7vq" path="res://scenes/characters/enemies/charger.tscn" id="1_j7jpq"]
+[ext_resource type="Script" path="res://scripts/resources/wave.gd" id="2_7m6sk"]
+[ext_resource type="Curve2D" uid="uid://cfxnah7g7cnt0" path="res://resources/curves/c_back_and_forth.tres" id="3_0uqwr"]
+[ext_resource type="Texture2D" uid="uid://b5gl6cutqwiy0" path="res://resources/atlases/charger_atlas.tres" id="4_sbn7k"]
+
+[resource]
+script = ExtResource("2_7m6sk")
+enemy_type = ExtResource("1_j7jpq")
+wave_curve = ExtResource("3_0uqwr")
+enemy_count = 3
+time_between_enemies = 1.0
+cooldown = 5.0
+wave_icon = ExtResource("4_sbn7k")
