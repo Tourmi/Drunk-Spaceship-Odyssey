@@ -1,6 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf7nijfhekhb2"]
+[gd_scene load_steps=8 format=3 uid="uid://cf7nijfhekhb2"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_qilv3"]
+[ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="2_qsrb7"]
+[ext_resource type="PackedScene" uid="uid://cdeajfbfxxqs4" path="res://scenes/powerups/projectile_powerup.tscn" id="3_cka4g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0m3k"]
+radius = 3.0
 
 [sub_resource type="Animation" id="Animation_itb2o"]
 length = 0.001
@@ -53,9 +58,21 @@ min_speed = 15.0
 max_speed = 25.0
 count = 2
 
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_r0m3k")
+
 [node name="AnimationPlayer" parent="." index="6"]
 autoplay = "regular"
 speed_scale = 4.0
 libraries = {
 "": SubResource("AnimationLibrary_5g0el")
 }
+
+[node name="ExplosionOnDeathComponent" parent="." index="7"]
+position = Vector2(2, 0)
+
+[node name="DropOnDeathComponent" type="Node2D" parent="." index="8" node_paths=PackedStringArray("health_component")]
+script = ExtResource("2_qsrb7")
+is_picked = true
+to_spawn = Array[PackedScene]([ExtResource("3_cka4g")])
+health_component = NodePath("../Health_Component")

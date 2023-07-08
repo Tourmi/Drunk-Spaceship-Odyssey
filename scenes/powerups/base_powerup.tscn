@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://y4krjdkwng28"]
+
+[ext_resource type="Script" path="res://scenes/powerups/powerup.gd" id="1_vqciq"]
+[ext_resource type="Texture2D" uid="uid://da1rpw3a7230h" path="res://assets/charged_shot.png" id="2_c2t55"]
+[ext_resource type="Script" path="res://scripts/components/delete_offscreen_component.gd" id="3_q7wrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yrtqh"]
+radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnyr3"]
+size = Vector2(6, 4)
+
+[node name="BasePowerup" type="CharacterBody2D" groups=["Powerup"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_vqciq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yrtqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_c2t55")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DeleteOffscreenComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_q7wrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteOffscreenComponent"]
+shape = SubResource("RectangleShape2D_nnyr3")

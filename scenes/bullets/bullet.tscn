@@ -1,10 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://yrhwlxsiqphe"]
+[gd_scene load_steps=10 format=3 uid="uid://yrhwlxsiqphe"]
 
 [ext_resource type="Script" path="res://scenes/bullets/bullet.gd" id="1_776va"]
 [ext_resource type="Texture2D" uid="uid://jhy8acikttrh" path="res://assets/pew.png" id="1_cfgw6"]
+[ext_resource type="Script" path="res://scripts/components/delete_after_time_component.gd" id="3_81umv"]
+[ext_resource type="Script" path="res://scripts/components/delete_offscreen_component.gd" id="4_r8yqr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dydl4"]
 radius = 2.0
+
+[sub_resource type="Animation" id="Animation_ghr21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_7adee"]
 resource_name = "regular"
@@ -23,30 +40,18 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_ghr21"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cc33w"]
 _data = {
 "RESET": SubResource("Animation_ghr21"),
 "regular": SubResource("Animation_7adee")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwxhf"]
+size = Vector2(4, 4)
+
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 128
 script = ExtResource("1_776va")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -62,3 +67,15 @@ autoplay = "regular"
 libraries = {
 "": SubResource("AnimationLibrary_cc33w")
 }
+
+[node name="DeleteAfterTimeComponent" type="Node" parent="."]
+script = ExtResource("3_81umv")
+timeout = 20.0
+
+[node name="DeleteOffscreenComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_r8yqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteOffscreenComponent"]
+shape = SubResource("RectangleShape2D_pwxhf")

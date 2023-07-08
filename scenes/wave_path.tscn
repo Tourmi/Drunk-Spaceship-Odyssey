@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hh7ss1amojul"]
+
+[ext_resource type="Script" path="res://scripts/components/delete_on_empty.gd" id="1_3ji68"]
+
+[sub_resource type="Curve2D" id="Curve2D_8appm"]
+
+[node name="WavePath" type="Path2D"]
+curve = SubResource("Curve2D_8appm")
+
+[node name="DeleteOnEmpty" type="Node" parent="."]
+script = ExtResource("1_3ji68")

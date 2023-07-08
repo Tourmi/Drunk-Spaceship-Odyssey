@@ -125,6 +125,10 @@ tint_progress = Color(1, 0.172549, 0, 1)
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Difficulty" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="BombsContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

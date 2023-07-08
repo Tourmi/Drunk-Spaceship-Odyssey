@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://iiiwl66gsglr"]
+
+[ext_resource type="Script" path="res://scenes/bomb_explosion.gd" id="1_v0pcx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57lvk"]
+radius = 2.0
+
+[node name="bomb_explosion" type="Node2D"]
+script = ExtResource("1_v0pcx")
+wave_width = 4.0
+initial_radius = 4.0
+initial_growth = 80.0
+growth_decrease = 60.0
+
+[node name="Outer" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outer"]
+shape = SubResource("CircleShape2D_57lvk")
+
+[connection signal="area_entered" from="Outer" to="." method="_on_outer_area_entered"]
+[connection signal="body_entered" from="Outer" to="." method="_on_outer_body_entered"]

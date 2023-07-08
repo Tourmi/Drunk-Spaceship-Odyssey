@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var hero_health := %CurrentHealth as TextureProgressBar
 @onready var tween_health := %ProgressHealthBar as TextureProgressBar
 @onready var multiplier := %Multiplier as Label
+@onready var difficulty := %Difficulty as Label
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var bombs_container := %BombsContainer as HFlowContainer
 
@@ -12,6 +13,7 @@ var inited := false
 
 func _process(delta: float) -> void:
 	multiplier.text = "Mult:%.2f" % Globals.get_multiplier()
+	difficulty.text = "Diff:%.2f" % (Globals.get_difficulty() + 1)
 	if Globals.hero == null: return
 	hero_health.max_value = Globals.hero.health_component.max_health
 	tween_health.max_value = Globals.hero.health_component.max_health

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3nf17l55ya4t"]
+[gd_scene load_steps=12 format=3 uid="uid://b3nf17l55ya4t"]
 
 [ext_resource type="Script" path="res://scenes/characters/hero.gd" id="1_q5ie8"]
+[ext_resource type="PackedScene" uid="uid://iiiwl66gsglr" path="res://scenes/bomb_explosion.tscn" id="2_4cock"]
 [ext_resource type="Texture2D" uid="uid://ck2hdnf7qf17c" path="res://assets/badguy.png" id="2_5t1vk"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="3_1w40q"]
 [ext_resource type="Script" path="res://scripts/components/shooter_component.gd" id="4_fn518"]
@@ -20,6 +21,8 @@ collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_q5ie8")
 firerate = 0.5
+bomb_count = 3
+explosion_scene = ExtResource("2_4cock")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -31,11 +34,11 @@ position = Vector2(0, 4)
 texture = ExtResource("2_5t1vk")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 6
+collision_mask = 22
 
 [node name="BulletHitbox" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(0, 4)
-polygon = PackedVector2Array(0, -7, -7, 6, 7, 6)
+polygon = PackedVector2Array(0, -5, -6, 5, 6, 5)
 
 [node name="Health_Component" type="Node" parent="."]
 script = ExtResource("3_1w40q")
@@ -48,8 +51,8 @@ script = ExtResource("4_fn518")
 bullet_to_spawn = ExtResource("5_mt37e")
 is_hero = true
 damage = 100
-min_speed = 20.0
-max_speed = 30.0
+min_speed = 40.0
+max_speed = 60.0
 
 [node name="DeathComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("6_1j2c6")
@@ -67,5 +70,11 @@ script = ExtResource("7_okt4v")
 is_guaranteed = true
 to_spawn = Array[PackedScene]([ExtResource("8_ayr8n")])
 health_component = NodePath("../Health_Component")
+
+[node name="PanicArea" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PanicArea"]
+polygon = PackedVector2Array(0, -4, -9, 11, 9, 11)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

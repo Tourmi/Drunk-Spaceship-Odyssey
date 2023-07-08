@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2kr8vy7b7dgu"]
+[gd_scene load_steps=9 format=3 uid="uid://d2kr8vy7b7dgu"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_w53xi"]
-[ext_resource type="Texture2D" uid="uid://cfd25ek8myg4o" path="res://assets/general_angelion.png" id="2_16wm2"]
+[ext_resource type="Texture2D" uid="uid://cl70qd2f8y0rr" path="res://assets/general_angelion2.0.png" id="2_hgpmw"]
+[ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="3_20qmt"]
+[ext_resource type="PackedScene" uid="uid://dplh0lamxkibi" path="res://scenes/powerups/bomb_powerup.tscn" id="4_kpv4x"]
+[ext_resource type="PackedScene" uid="uid://cdeajfbfxxqs4" path="res://scenes/powerups/projectile_powerup.tscn" id="5_4tj82"]
 
 [sub_resource type="Animation" id="Animation_wxcyd"]
 length = 0.001
@@ -44,7 +47,7 @@ _data = {
 [node name="Enemy" instance=ExtResource("1_w53xi")]
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource("2_16wm2")
+texture = ExtResource("2_hgpmw")
 
 [node name="Health_Component" parent="." index="2"]
 max_health = 500
@@ -59,11 +62,16 @@ random_spread = 0.1
 count = 7
 even_spread = 0.25
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-visible = false
-
 [node name="AnimationPlayer" parent="." index="6"]
 autoplay = "regular"
 libraries = {
 "": SubResource("AnimationLibrary_aoukm")
 }
+
+[node name="DropOnDeathComponent" type="Node2D" parent="." index="8" node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_20qmt")
+is_guaranteed = true
+is_picked = true
+base_odds_numerator = 20
+to_spawn = Array[PackedScene]([ExtResource("4_kpv4x"), ExtResource("5_4tj82")])
+health_component = NodePath("../Health_Component")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ug4m5hagellp"]
+[gd_scene load_steps=15 format=3 uid="uid://ug4m5hagellp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_aruh1"]
 [ext_resource type="Texture2D" uid="uid://cmp3cgcchj24k" path="res://assets/bckgrindpng.png" id="1_pi6ah"]
 [ext_resource type="PackedScene" uid="uid://c70l28kl2we5q" path="res://scenes/ui/right_panel.tscn" id="1_ric2v"]
 [ext_resource type="PackedScene" uid="uid://wjvxpan3jpey" path="res://scenes/ui/left_panel.tscn" id="3_j66l3"]
 [ext_resource type="PackedScene" uid="uid://b3nf17l55ya4t" path="res://scenes/characters/hero.tscn" id="4_4mj10"]
+[ext_resource type="PackedScene" uid="uid://hh7ss1amojul" path="res://scenes/wave_path.tscn" id="4_fg1l8"]
 [ext_resource type="Script" path="res://scenes/wave_spawner.gd" id="5_d4cyb"]
 [ext_resource type="PackedScene" uid="uid://cj4kordkry1pi" path="res://scenes/obstacles/walls.tscn" id="6_2tn3r"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="9_x1roc"]
 
 [sub_resource type="Animation" id="Animation_bc7wf"]
 length = 0.001
@@ -45,6 +47,11 @@ _data = {
 "RESET": SubResource("Animation_bc7wf"),
 "regular": SubResource("Animation_kxrlm")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slj7v"]
+size = Vector2(120, 180)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4yig6"]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -85,6 +92,7 @@ sharp_limit = 16.0
 
 [node name="SpawnPaths" type="Node2D" parent="."]
 script = ExtResource("5_d4cyb")
+path_scene = ExtResource("4_fg1l8")
 
 [node name="Bullets" type="Node2D" parent="."]
 
@@ -93,6 +101,30 @@ script = ExtResource("5_d4cyb")
 [node name="Player" parent="." instance=ExtResource("4_4mj10")]
 position = Vector2(166, 158)
 
-[node name="RightPanel" parent="." instance=ExtResource("1_ric2v")]
+[node name="GameBounds" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 32
 
-[node name="LeftPanel" parent="." instance=ExtResource("3_j66l3")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBounds"]
+position = Vector2(160, 90)
+shape = SubResource("RectangleShape2D_slj7v")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+script = ExtResource("9_x1roc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LeftPanel" parent="CanvasLayer" instance=ExtResource("3_j66l3")]
+
+[node name="RightPanel" parent="CanvasLayer" instance=ExtResource("1_ric2v")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 321.0
+offset_bottom = 180.0
+texture = SubResource("PlaceholderTexture2D_4yig6")

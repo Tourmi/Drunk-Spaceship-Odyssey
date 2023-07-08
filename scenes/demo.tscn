@@ -11,4 +11,5 @@
 [node name="LeftPanel" parent="." instance=ExtResource("2_ndlji")]
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-1, 4)
 curve = ExtResource("3_vk47l")
