@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PathList" load_steps=3 format=3 uid="uid://1squaxyf20uo"]
+[gd_resource type="Resource" script_class="PathList" load_steps=4 format=3 uid="uid://1squaxyf20uo"]
 
 [ext_resource type="Script" path="res://scripts/resources/path_list.gd" id="1_76wfl"]
+[ext_resource type="Curve2D" uid="uid://dfkegedjvr245" path="res://resources/curvis.tres" id="1_w1m54"]
 
 [sub_resource type="Curve2D" id="Curve2D_q1cd7"]
 _data = {
@@ -10,4 +11,4 @@ point_count = 5
 
 [resource]
 script = ExtResource("1_76wfl")
-path_list = Array[Curve2D]([SubResource("Curve2D_q1cd7")])
+path_list = Array[Curve2D]([ExtResource("1_w1m54"), SubResource("Curve2D_q1cd7")])
