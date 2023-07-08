@@ -1,13 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://wjvxpan3jpey"]
+[gd_scene load_steps=3 format=3 uid="uid://wjvxpan3jpey"]
+
+[ext_resource type="Script" path="res://scenes/ui/left_panel.gd" id="1_6sc07"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ksrw"]
 size = Vector2(100, 180)
 
-[node name="LeftPanel" type="GridContainer"]
+[node name="LeftPanel" type="PanelContainer"]
 offset_right = 100.0
 offset_bottom = 180.0
+script = ExtResource("1_6sc07")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_4ksrw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeroHealth" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

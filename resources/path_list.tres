@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PathList" load_steps=4 format=3 uid="uid://1squaxyf20uo"]
 
 [ext_resource type="Script" path="res://scripts/resources/path_list.gd" id="1_76wfl"]
-[ext_resource type="Curve2D" uid="uid://dfkegedjvr245" path="res://resources/curvis.tres" id="1_w1m54"]
+[ext_resource type="Curve2D" path="res://resources/curvis.tres" id="1_w1m54"]
 
 [sub_resource type="Curve2D" id="Curve2D_q1cd7"]
 _data = {

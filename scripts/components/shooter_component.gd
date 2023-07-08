@@ -12,8 +12,8 @@ func _process(delta: float) -> void:
 	pass
 
 func shoot(direction: Vector2) -> void:
-	var bullet = bullet_to_spawn.instantiate() as Bullet
+	var bullet := bullet_to_spawn.instantiate() as Bullet
 	bullet.is_hero = self.is_hero
 	bullet.position = self.global_position
-	bullet.velocity = direction * bullet.speed
+	bullet.velocity = (direction * bullet.speed).rotated(self.global_rotation)
 	Globals.bullet_spawn.add_child(bullet)

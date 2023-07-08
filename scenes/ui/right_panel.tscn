@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c70l28kl2we5q"]
+[gd_scene load_steps=6 format=3 uid="uid://c70l28kl2we5q"]
 
 [ext_resource type="PackedScene" uid="uid://dqxju1ulw2ldk" path="res://scenes/ui/spawn_button.tscn" id="1_81mvk"]
+[ext_resource type="Script" path="res://scenes/ui/right_panel.gd" id="1_osc8y"]
+[ext_resource type="Resource" uid="uid://cnmjukij70y8j" path="res://resources/enemy_list.tres" id="2_rnhhw"]
+[ext_resource type="Resource" uid="uid://1squaxyf20uo" path="res://resources/path_list.tres" id="3_phgya"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ksrw"]
 size = Vector2(100, 180)
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("enemy_button_container")]
 offset_right = 100.0
 offset_bottom = 180.0
+script = ExtResource("1_osc8y")
+enemy_list = ExtResource("2_rnhhw")
+path_list = ExtResource("3_phgya")
+spawn_enemy_button_scene = ExtResource("1_81mvk")
+enemy_button_container = NodePath("MarginContainer/VBoxContainer/EnemyButtons")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -24,5 +32,8 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="SpawnButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_81mvk")]
+[node name="EnemyButtons" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" to="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@19587" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@19587" method="_on_pressed" flags=18]

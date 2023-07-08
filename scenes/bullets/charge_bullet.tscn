@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://qb0xqlwg8pi3"]
+
+[ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/bullets/bullet.tscn" id="1_18can"]
+[ext_resource type="Texture2D" uid="uid://da1rpw3a7230h" path="res://assets/charged_shot.png" id="2_7yjvv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtwwn"]
+radius = 2.0
+height = 6.0
+
+[node name="Bullet" instance=ExtResource("1_18can")]
+speed = 45.0
+damage = 150
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_dtwwn")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_7yjvv")
+hframes = 1

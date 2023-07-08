@@ -1,4 +1,5 @@
 @tool
+class_name SpawnButton
 extends Button
 
 @export var enemyToSpawn : PackedScene

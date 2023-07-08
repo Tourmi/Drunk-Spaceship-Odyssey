@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://sijy754x7vq"]
+
+[ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_0l03k"]
+[ext_resource type="Texture2D" uid="uid://bttvqoisg30c0" path="res://assets/chrgert.png" id="2_q1org"]
+[ext_resource type="PackedScene" uid="uid://qb0xqlwg8pi3" path="res://scenes/bullets/charge_bullet.tscn" id="3_dbpv0"]
+
+[node name="Enemy" instance=ExtResource("1_0l03k")]
+enemy_name = "charger"
+speed = 20.0
+look_down = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_q1org")
+hframes = 9
+vframes = 2
+
+[node name="Health_Component" parent="." index="2"]
+max_health = 200
+current_health = 200
+
+[node name="Shooter_Component" parent="." index="3"]
+bullet_to_spawn = ExtResource("3_dbpv0")
