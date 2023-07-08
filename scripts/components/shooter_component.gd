@@ -35,5 +35,5 @@ func _spawn_bullet(direction: Vector2) -> void:
 	bullet.is_hero = self.is_hero
 	bullet.position = self.global_position
 	bullet.velocity = (direction * (min_speed + (max_speed - min_speed) * randf()))
-	bullet.damage = damage
+	bullet.damage = self.damage
 	Globals.bullet_spawn.add_child(bullet)

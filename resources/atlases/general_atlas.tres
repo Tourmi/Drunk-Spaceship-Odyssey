@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://f3gk4p4k5w4q"]
 
-[ext_resource type="Texture2D" uid="uid://cfd25ek8myg4o" path="res://assets/general_angelion.png" id="1_yhjq0"]
+[ext_resource type="Texture2D" uid="uid://cl70qd2f8y0rr" path="res://assets/general_angelion2.0.png" id="1_8k7ct"]
 
 [resource]
-atlas = ExtResource("1_yhjq0")
+atlas = ExtResource("1_8k7ct")
 region = Rect2(0, 0, 16, 13)

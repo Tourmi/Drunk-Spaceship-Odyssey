@@ -7,3 +7,7 @@ extends Resource
 @export var time_between_enemies : float
 @export var cooldown : float
 @export var wave_icon : Texture2D
+
+@export_category("Difficulty")
+@export var time_between_enemies_growth : float
+@export var enemy_count_growth : int

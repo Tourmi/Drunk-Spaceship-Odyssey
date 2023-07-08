@@ -9,7 +9,9 @@
 script = ExtResource("2_7m6sk")
 enemy_type = ExtResource("1_j7jpq")
 wave_curve = ExtResource("3_0uqwr")
-enemy_count = 3
-time_between_enemies = 1.0
+enemy_count = 2
+time_between_enemies = 1.5
 cooldown = 5.0
 wave_icon = ExtResource("4_sbn7k")
+time_between_enemies_growth = 0.5
+enemy_count_growth = 1

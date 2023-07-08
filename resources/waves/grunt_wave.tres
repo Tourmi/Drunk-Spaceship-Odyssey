@@ -13,3 +13,5 @@ enemy_count = 5
 time_between_enemies = 0.5
 cooldown = 5.0
 wave_icon = ExtResource("4_qrm31")
+time_between_enemies_growth = 1.0
+enemy_count_growth = 1
