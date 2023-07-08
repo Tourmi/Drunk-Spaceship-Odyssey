@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://wjvxpan3jpey"]
+[gd_scene load_steps=21 format=3 uid="uid://wjvxpan3jpey"]
 
 [ext_resource type="Script" path="res://scenes/ui/left_panel.gd" id="1_6sc07"]
 [ext_resource type="Texture2D" uid="uid://b3fxmfrnw6ish" path="res://assets/leftlayout.png" id="2_1akfs"]
-[ext_resource type="Texture2D" uid="uid://b5r8pb7yk4xko" path="res://assets/health_border.png" id="2_rn4rm"]
 [ext_resource type="PackedScene" uid="uid://drksy8gxidviw" path="res://scenes/ui/bomb_icon.tscn" id="2_t2vmu"]
 [ext_resource type="Texture2D" uid="uid://dactdq5jamt1m" path="res://assets/health.png" id="3_ndd2w"]
+[ext_resource type="Texture2D" uid="uid://bsud5s0opghv3" path="res://assets/hp_bar.png" id="4_m7s1y"]
+[ext_resource type="Texture2D" uid="uid://bb5w7rcllq68x" path="res://assets/fuel_bar.png" id="6_jo6td"]
+[ext_resource type="Texture2D" uid="uid://d2l4l7vrw42vg" path="res://assets/fuel.png" id="7_umyyh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14w3l"]
 atlas = ExtResource("2_1akfs")
@@ -79,6 +81,90 @@ _data = {
 "steam": SubResource("Animation_0cp8b")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp4jr"]
+atlas = ExtResource("4_m7s1y")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="Animation" id="Animation_h5iyt"]
+resource_name = "regular"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_over:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 320, 180), Rect2(320, 0, 320, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_3l12s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_over:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 320, 180)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1hlq"]
+_data = {
+"RESET": SubResource("Animation_3l12s"),
+"regular": SubResource("Animation_h5iyt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aprxb"]
+atlas = ExtResource("6_jo6td")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="Animation" id="Animation_1hrk1"]
+resource_name = "regular"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_over:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(0, 0, 320, 180), Rect2(320, 0, 320, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_ox3lv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_over:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 320, 180)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4v1c2"]
+_data = {
+"RESET": SubResource("Animation_ox3lv"),
+"regular": SubResource("Animation_1hrk1")
+}
+
 [node name="LeftPanel" type="PanelContainer"]
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 320.0
@@ -94,48 +180,78 @@ texture = SubResource("AtlasTexture_14w3l")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 220
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 233
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="CurrentHealth" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 2
-value = 50.0
-texture_over = ExtResource("2_rn4rm")
-texture_progress = ExtResource("3_ndd2w")
-tint_progress = Color(0.12549, 1, 0.290196, 1)
-
-[node name="ProgressHealthBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/CurrentHealth"]
-unique_name_in_owner = true
-show_behind_parent = true
-texture_filter = 1
-layout_mode = 0
-offset_right = 90.0
-offset_bottom = 8.0
-value = 50.0
-texture_progress = ExtResource("3_ndd2w")
-tint_progress = Color(1, 0.172549, 0, 1)
-
 [node name="Multiplier" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+horizontal_alignment = 2
 
 [node name="Difficulty" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+horizontal_alignment = 2
 
 [node name="BombsContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "regular"
 speed_scale = 0.75
 libraries = {
 "": SubResource("AnimationLibrary_krcac")
+}
+
+[node name="CurrentHealth" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+value = 100.0
+texture_over = SubResource("AtlasTexture_tp4jr")
+texture_progress = ExtResource("3_ndd2w")
+texture_progress_offset = Vector2(13, 8)
+tint_progress = Color(0.0156863, 0.882353, 0.196078, 1)
+
+[node name="ProgressHealthBar" type="TextureProgressBar" parent="CurrentHealth"]
+unique_name_in_owner = true
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+value = 50.0
+texture_progress = ExtResource("3_ndd2w")
+texture_progress_offset = Vector2(13, 8)
+tint_progress = Color(0.94902, 0, 0.0980392, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CurrentHealth"]
+autoplay = "regular"
+libraries = {
+"": SubResource("AnimationLibrary_g1hlq")
+}
+
+[node name="CurrentFuel" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_over = SubResource("AtlasTexture_aprxb")
+texture_progress = ExtResource("7_umyyh")
+texture_progress_offset = Vector2(10, 135)
+tint_progress = Color(0.984314, 0.94902, 0.211765, 1)
+radial_initial_angle = 270.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CurrentFuel"]
+autoplay = "regular"
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_4v1c2")
 }

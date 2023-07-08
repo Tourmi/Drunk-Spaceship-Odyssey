@@ -4,6 +4,7 @@ extends PanelContainer
 
 @onready var hero_health := %CurrentHealth as TextureProgressBar
 @onready var tween_health := %ProgressHealthBar as TextureProgressBar
+@onready var hero_fuel := %CurrentFuel as TextureProgressBar
 @onready var multiplier := %Multiplier as Label
 @onready var difficulty := %Difficulty as Label
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
@@ -17,19 +18,34 @@ func _process(delta: float) -> void:
 	if Globals.hero == null: return
 	hero_health.max_value = Globals.hero.health_component.max_health
 	tween_health.max_value = Globals.hero.health_component.max_health
+	hero_fuel.max_value = Globals.hero.fuel_component.max_fuel
 	if inited: return
 	hero_health.value = Globals.hero.health_component.current_health
 	tween_health.value = Globals.hero.health_component.current_health
+	hero_fuel.value = Globals.hero.fuel_component.current_fuel
 	Globals.hero.health_component.health_changed.connect(_on_health_changed)
+	Globals.hero.health_component.maximum_health_changed.connect(_on_max_health_changed)
+	Globals.hero.fuel_component.fuel_changed.connect(_on_fuel_changed)
+	Globals.hero.fuel_component.max_fuel_changed.connect(_on_max_fuel_changed)
 
 	Globals.hero.bombs_changed.connect(_on_bombs_changed)
 	_on_bombs_changed(0, Globals.hero.bomb_count)
 	inited = true
 
-func _on_health_changed(amount : int) -> void:
+func _on_health_changed(amount : int, _old: int) -> void:
 	hero_health.value = amount
 	var tween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(tween_health, "value", amount, 1)
+
+func _on_max_health_changed(new : int, _old : int) -> void:
+	hero_health.max_value = new
+	tween_health.max_value = new
+
+func _on_fuel_changed(new: int, _old: int) -> void:
+	hero_fuel.value = new
+
+func _on_max_fuel_changed(new: int, _old: int) -> void:
+	hero_fuel.max_value = new
 
 func _attempt_steam() -> void:
 	if randf() > 0.90:

@@ -8,9 +8,9 @@ radius = 2.0
 [node name="bomb_explosion" type="Node2D"]
 script = ExtResource("1_v0pcx")
 wave_width = 4.0
-initial_radius = 4.0
+initial_radius = 6.0
 initial_growth = 80.0
-growth_decrease = 60.0
+growth_decrease = 64.0
 
 [node name="Outer" type="Area2D" parent="."]
 collision_layer = 128

@@ -4,6 +4,7 @@ var spawner : WaveSpawner
 var bullet_spawn : Node
 var hero : Hero
 var game_bounds : Area2D
+var camera : Camera
 
 var difficulty := 1.0
 

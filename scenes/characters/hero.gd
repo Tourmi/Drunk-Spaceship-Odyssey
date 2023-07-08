@@ -10,7 +10,7 @@ const target_dist_from_walls := 20
 const RANDOM_DIR_INFLUENCE := 1
 const AVOID_BULLETS_INFLUENCE := 20
 const AVOID_ENEMIES_INFLUENCE := 15
-const AVOID_WALLS_INFLUENCE := 5
+const AVOID_WALLS_INFLUENCE := 8
 const POWERUP_INFLUENCE := 10
 
 @export var bomb_cooldown := 3.0
@@ -27,6 +27,7 @@ var curr_bomb_cooldown : float
 
 @onready var shooter_component := $Shooter_Component as Shooter_Component
 @onready var health_component := $Health_Component as Health_Component
+@onready var fuel_component := $FuelComponent as FuelComponent
 @onready var avoid_area := $AvoidanceArea as Area2D
 @onready var panic_area := $PanicArea as Area2D
 
@@ -119,6 +120,7 @@ func _get_direction_to_powerup() -> Vector2:
 	var curr_powerup : Powerup = null
 	for p in get_tree().get_nodes_in_group("Powerup"):
 		var powerup := p as Powerup
+		if _should_ignore_powerup(powerup): continue
 		var dist := position.distance_squared_to(powerup.global_position)
 		if dist < min_dist:
 			curr_powerup = powerup
@@ -126,6 +128,13 @@ func _get_direction_to_powerup() -> Vector2:
 	if curr_powerup == null: return Vector2()
 
 	return position.direction_to(curr_powerup.global_position)
+
+func _should_ignore_powerup(powerup : Powerup) -> bool:
+	if powerup is HealthPickup:
+		if float(health_component.current_health) / health_component.max_health >= 0.75: return true
+	if powerup is FuelPickup:
+		if float(fuel_component.current_fuel) / fuel_component.max_fuel >= 0.75: return true
+	return false
 
 func _set_bombs(amount : int) -> void:
 	bombs_changed.emit(bomb_count, amount)
@@ -144,3 +153,12 @@ func _should_use_bomb() -> bool:
 		if node.get_parent() is Enemy: return true
 
 	return false
+
+
+func _on_health_component_health_changed(new_amount : int, old_amount : int) -> void:
+	if old_amount - new_amount < 10: return
+	Globals.camera.shake(1, 0.25)
+
+
+func _on_health_component_health_empty() -> void:
+	Globals.camera.shake(4, 0.5)

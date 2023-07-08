@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1u76vo1js3o2"]
+
+[ext_resource type="Script" path="res://scenes/powerups/health_pickup.gd" id="2_a52e0"]
+[ext_resource type="Texture2D" uid="uid://rf6i3cy0xpw1" path="res://assets/health_pack.png" id="3_86b7r"]
+[ext_resource type="Script" path="res://scripts/components/delete_offscreen_component.gd" id="3_gvjhe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7f06"]
+radius = 4.12311
+
+[sub_resource type="Animation" id="Animation_w1il3"]
+resource_name = "regular"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_nnt0k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_naj3o"]
+_data = {
+"RESET": SubResource("Animation_nnt0k"),
+"regular": SubResource("Animation_w1il3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8fnm"]
+size = Vector2(8, 8)
+
+[node name="HealthPickup" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_a52e0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l7f06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_86b7r")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "regular"
+speed_scale = 0.9
+libraries = {
+"": SubResource("AnimationLibrary_naj3o")
+}
+
+[node name="DeleteOffscreenComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_gvjhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteOffscreenComponent"]
+shape = SubResource("RectangleShape2D_d8fnm")

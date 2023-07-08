@@ -24,9 +24,12 @@ func _ready() -> void:
 	outer_area.get_child(0).shape = circle
 
 func _physics_process(delta: float) -> void:
+	Globals.camera.shake(1, 1)
 	if current_growth <= 10:
 		timeout -= delta
-		if timeout <= 0: queue_free()
+		if timeout <= 0:
+			Globals.camera.shake(0, 0)
+			queue_free()
 	current_growth = maxf(0, current_growth - growth_decrease * delta)
 	current_radius += current_growth * delta
 	circle.radius = current_radius + wave_width / 2

@@ -11,6 +11,8 @@ func _ready() -> void:
 	Globals.spawner = spawn_paths
 	Globals.bullet_spawn = $Bullets as Node
 	Globals.game_bounds = game_bounds
+	Globals.camera = camera
 
 func _process(delta: float) -> void:
 	camera.offset = Vector2()
+

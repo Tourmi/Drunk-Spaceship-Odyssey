@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://iitsx7jjs4b1"]
+
+[ext_resource type="PackedScene" uid="uid://y4krjdkwng28" path="res://scenes/powerups/base_powerup.tscn" id="1_x5j4v"]
+[ext_resource type="Texture2D" uid="uid://cbnnfvhtlmrfd" path="res://assets/energy_juice.png" id="2_oncjg"]
+[ext_resource type="Script" path="res://scenes/powerups/fuel_pickup.gd" id="2_q6p3b"]
+
+[sub_resource type="Animation" id="Animation_iguo8"]
+resource_name = "regular"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_jvk4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxthu"]
+_data = {
+"RESET": SubResource("Animation_jvk4o"),
+"regular": SubResource("Animation_iguo8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lv22"]
+size = Vector2(6, 6)
+
+[node name="BasePowerup" instance=ExtResource("1_x5j4v")]
+script = ExtResource("2_q6p3b")
+fuel_amount = 500
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_oncjg")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "regular"
+libraries = {
+"": SubResource("AnimationLibrary_lxthu")
+}
+
+[node name="CollisionShape2D" parent="DeleteOffscreenComponent" index="0"]
+shape = SubResource("RectangleShape2D_5lv22")

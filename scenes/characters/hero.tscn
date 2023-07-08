@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3nf17l55ya4t"]
+[gd_scene load_steps=13 format=3 uid="uid://b3nf17l55ya4t"]
 
 [ext_resource type="Script" path="res://scenes/characters/hero.gd" id="1_q5ie8"]
 [ext_resource type="PackedScene" uid="uid://iiiwl66gsglr" path="res://scenes/bomb_explosion.tscn" id="2_4cock"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/components/death_component.gd" id="6_1j2c6"]
 [ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="7_okt4v"]
 [ext_resource type="PackedScene" uid="uid://drvv0nxqk1k84" path="res://scenes/effects/explosion.tscn" id="8_ayr8n"]
+[ext_resource type="Script" path="res://scripts/components/fuel_component.gd" id="10_ig05v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jy3i"]
 radius = 5.0
@@ -75,6 +76,17 @@ health_component = NodePath("../Health_Component")
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="PanicArea"]
-polygon = PackedVector2Array(0, -4, -9, 11, 9, 11)
+polygon = PackedVector2Array(0, -5, -10, 12, 10, 12)
+
+[node name="FuelComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("10_ig05v")
+health_component = NodePath("../Health_Component")
+max_fuel = 1000
+current_fuel = 1000
+base_drain = 40.0
+drain_growth = 1.0
+health_drain_multiplier = 0.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="health_changed" from="Health_Component" to="." method="_on_health_component_health_changed"]
+[connection signal="health_empty" from="Health_Component" to="." method="_on_health_component_health_empty"]

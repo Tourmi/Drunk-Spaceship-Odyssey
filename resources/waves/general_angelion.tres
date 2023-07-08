@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/resources/wave.gd" id="1_combi"]
 [ext_resource type="PackedScene" uid="uid://d2kr8vy7b7dgu" path="res://scenes/characters/enemies/general_angelion.tscn" id="1_v4tid"]
-[ext_resource type="Curve2D" uid="uid://dfkegedjvr245" path="res://resources/curves/curvis.tres" id="3_d4f5o"]
+[ext_resource type="Curve2D" uid="uid://ccac11ye8t6mv" path="res://resources/curves/loop.tres" id="3_bixrd"]
 [ext_resource type="Texture2D" uid="uid://f3gk4p4k5w4q" path="res://resources/atlases/general_atlas.tres" id="4_u8iv4"]
 
 [resource]
 script = ExtResource("1_combi")
 enemy_type = ExtResource("1_v4tid")
-wave_curve = ExtResource("3_d4f5o")
+wave_curve = ExtResource("3_bixrd")
 enemy_count = 1
 time_between_enemies = 2.0
 cooldown = 20.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8uikrl1k17ve"]
+[gd_scene load_steps=13 format=3 uid="uid://8uikrl1k17ve"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_56mee"]
 [ext_resource type="Texture2D" uid="uid://djegtw2p4ix8o" path="res://assets/peeceshipt.png" id="2_iku7c"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scripts/components/death_component.gd" id="7_mieof"]
 [ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="8_tkxor"]
 [ext_resource type="PackedScene" uid="uid://drvv0nxqk1k84" path="res://scenes/effects/explosion.tscn" id="9_1oh1u"]
+[ext_resource type="PackedScene" uid="uid://d1u76vo1js3o2" path="res://scenes/powerups/health_pickup.tscn" id="10_ow2x4"]
+[ext_resource type="PackedScene" uid="uid://iitsx7jjs4b1" path="res://scenes/powerups/fuel_pickup.tscn" id="11_uypbw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34bpp"]
 radius = 6.0
@@ -65,6 +67,13 @@ shape = SubResource("CircleShape2D_34bpp")
 script = ExtResource("8_tkxor")
 is_guaranteed = true
 to_spawn = Array[PackedScene]([ExtResource("9_1oh1u")])
+health_component = NodePath("../Health_Component")
+
+[node name="RegularDrops" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("8_tkxor")
+is_picked = true
+base_odds_numerator = 20
+to_spawn = Array[PackedScene]([ExtResource("10_ow2x4"), ExtResource("11_uypbw")])
 health_component = NodePath("../Health_Component")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

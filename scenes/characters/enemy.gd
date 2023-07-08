@@ -17,6 +17,8 @@ extends PathFollow2D
 
 @onready var sprite := %Sprite as Sprite2D
 
+var progress_direction := 1
+
 func _ready() -> void:
 	speed *= 1 + Globals.get_difficulty() * speed_growth
 	health_component.max_health *= 1 + Globals.get_difficulty() * health_growth
@@ -28,7 +30,8 @@ func _ready() -> void:
 	if look_down: self.rotation = TAU / 4
 
 func _process(delta: float) -> void:
-	progress += speed * delta
+	progress += speed * delta * progress_direction
+	if progress_direction == -1 and not look_down: rotate(PI)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
