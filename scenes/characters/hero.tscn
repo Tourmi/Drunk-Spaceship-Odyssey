@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3nf17l55ya4t"]
+[gd_scene load_steps=11 format=3 uid="uid://b3nf17l55ya4t"]
 
 [ext_resource type="Script" path="res://scenes/characters/hero.gd" id="1_q5ie8"]
 [ext_resource type="Texture2D" uid="uid://ck2hdnf7qf17c" path="res://assets/badguy.png" id="2_5t1vk"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/components/shooter_component.gd" id="4_fn518"]
 [ext_resource type="PackedScene" uid="uid://cwqe4rg0veby0" path="res://scenes/bullets/player_bullet.tscn" id="5_mt37e"]
 [ext_resource type="Script" path="res://scripts/components/death_component.gd" id="6_1j2c6"]
+[ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="7_okt4v"]
+[ext_resource type="PackedScene" uid="uid://drvv0nxqk1k84" path="res://scenes/effects/explosion.tscn" id="8_ayr8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jy3i"]
 radius = 5.0
@@ -45,6 +47,7 @@ position = Vector2(0, -7)
 script = ExtResource("4_fn518")
 bullet_to_spawn = ExtResource("5_mt37e")
 is_hero = true
+damage = 100
 min_speed = 20.0
 max_speed = 30.0
 
@@ -58,5 +61,11 @@ collision_mask = 6
 [node name="AvoidanceShape" type="CollisionShape2D" parent="AvoidanceArea"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_bdqjg")
+
+[node name="DropOnDeathComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("7_okt4v")
+is_guaranteed = true
+to_spawn = Array[PackedScene]([ExtResource("8_ayr8n")])
+health_component = NodePath("../Health_Component")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

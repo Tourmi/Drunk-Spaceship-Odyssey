@@ -52,6 +52,7 @@ current_health = 500
 
 [node name="Shooter_Component" parent="." index="3"]
 position = Vector2(5, 0)
+damage = 100
 min_speed = 10.0
 max_speed = 30.0
 random_spread = 0.1

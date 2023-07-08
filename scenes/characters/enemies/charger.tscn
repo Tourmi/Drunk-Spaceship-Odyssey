@@ -58,6 +58,7 @@ current_health = 200
 
 [node name="Shooter_Component" parent="." index="3"]
 bullet_to_spawn = ExtResource("3_dbpv0")
+damage = 150
 min_speed = 40.0
 max_speed = 40.0
 

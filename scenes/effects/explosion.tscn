@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://drvv0nxqk1k84"]
+
+[ext_resource type="Script" path="res://scripts/emit_on_ready.gd" id="1_51don"]
+[ext_resource type="Script" path="res://scripts/components/delete_after_time_component.gd" id="1_xqbd5"]
+
+[node name="explosion" type="Node2D"]
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 0.74
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 20.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+damping_min = 1.0
+damping_max = 5.0
+scale_amount_min = 0.5
+color = Color(1, 0.815686, 0, 1)
+script = ExtResource("1_51don")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.74
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 20.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+damping_min = 1.0
+damping_max = 5.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(1, 0.466667, 0, 1)
+script = ExtResource("1_51don")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 0.74
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 20.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+damping_min = 1.0
+damping_max = 5.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color = Color(1, 0.0901961, 0.0784314, 1)
+script = ExtResource("1_51don")
+
+[node name="DeleteAfterTimeComponent" type="Node" parent="."]
+script = ExtResource("1_xqbd5")
+timeout = 4.0
