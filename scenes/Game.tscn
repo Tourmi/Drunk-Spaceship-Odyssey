@@ -54,7 +54,6 @@ curve = SubResource("Curve2D_xxt0h")
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="walls" parent="." instance=ExtResource("6_2tn3r")]
-position = Vector2(-1, 0)
 
 [node name="Player" parent="." instance=ExtResource("4_4mj10")]
 position = Vector2(166, 158)

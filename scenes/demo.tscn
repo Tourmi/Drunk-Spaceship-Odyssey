@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7dsf1u44q7ey"]
+
+[ext_resource type="PackedScene" uid="uid://c70l28kl2we5q" path="res://scenes/ui/right_panel.tscn" id="1_8006d"]
+[ext_resource type="PackedScene" uid="uid://wjvxpan3jpey" path="res://scenes/ui/left_panel.tscn" id="2_ndlji"]
+
+[sub_resource type="Curve2D" id="Curve2D_0xmey"]
+
+[node name="demo" type="Node2D"]
+
+[node name="PanelContainer" parent="." instance=ExtResource("1_8006d")]
+offset_left = 220.0
+offset_right = 320.0
+
+[node name="LeftPanel" parent="." instance=ExtResource("2_ndlji")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0xmey")
