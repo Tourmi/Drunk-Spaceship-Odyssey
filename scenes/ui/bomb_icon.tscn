@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://drksy8gxidviw"]
+
+[ext_resource type="Texture2D" uid="uid://dumaj7bwaj1iy" path="res://assets/bomb_charge.png" id="1_teygj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx373"]
+atlas = ExtResource("1_teygj")
+region = Rect2(0, 0, 6, 6)
+
+[node name="bomb_icon" type="TextureRect"]
+texture_filter = 1
+texture = SubResource("AtlasTexture_dx373")
