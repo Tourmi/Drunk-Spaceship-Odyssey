@@ -5,5 +5,5 @@ extends Powerup
 
 func pickup() -> void:
 	Globals.hero.powerup_sound.play()
-	Globals.hero.speed += speed_amount
+	Globals.hero.speed = mini(300, Globals.hero.speed + speed_amount)
 	super.pickup()

@@ -25,7 +25,7 @@ func _set_health(amount : int) -> void:
 	current_health = clampi(amount, 0, max_health)
 	if old == current_health: return
 	if current_health > old and heal_sound_effect != null: heal_sound_effect.play()
-	if old - current_health >= 10 and hurt_sound_effect!= null: hurt_sound_effect.play()
+	if old - current_health >= 10 and is_instance_valid(hurt_sound_effect): hurt_sound_effect.play()
 	health_changed.emit(current_health, old)
 	if current_health <= 0:
 		health_empty.emit()

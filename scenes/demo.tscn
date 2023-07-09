@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c70l28kl2we5q" path="res://scenes/ui/right_panel.tscn" id="1_8006d"]
 [ext_resource type="PackedScene" uid="uid://wjvxpan3jpey" path="res://scenes/ui/left_panel.tscn" id="2_ndlji"]
-[ext_resource type="Curve2D" uid="uid://ccac11ye8t6mv" path="res://resources/curves/loop.tres" id="3_dkfd7"]
+[ext_resource type="Curve2D" uid="uid://d2qvtf4181r4" path="res://resources/curves/aggro_r.tres" id="3_fbh31"]
 
 [node name="demo" type="Node2D"]
 
@@ -11,4 +11,4 @@
 [node name="LeftPanel" parent="." instance=ExtResource("2_ndlji")]
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = ExtResource("3_dkfd7")
+curve = ExtResource("3_fbh31")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=7 format=3 uid="uid://dm4h83sqpyt63"]
+[gd_resource type="Resource" script_class="Wave" load_steps=9 format=3 uid="uid://dm4h83sqpyt63"]
 
 [ext_resource type="PackedScene" uid="uid://sijy754x7vq" path="res://scenes/characters/enemies/charger.tscn" id="1_j7jpq"]
 [ext_resource type="Script" path="res://scripts/resources/wave.gd" id="2_7m6sk"]
@@ -6,14 +6,16 @@
 [ext_resource type="Curve2D" uid="uid://ccac11ye8t6mv" path="res://resources/curves/loop.tres" id="3_spuik"]
 [ext_resource type="Texture2D" uid="uid://b5gl6cutqwiy0" path="res://resources/atlases/charger_atlas.tres" id="4_sbn7k"]
 [ext_resource type="Curve2D" uid="uid://daqq6v465uhec" path="res://resources/curves/eye.tres" id="4_x42dd"]
+[ext_resource type="Curve2D" uid="uid://dnmfcg35fo0nf" path="res://resources/curves/criss_cross.tres" id="6_wjg4q"]
+[ext_resource type="Curve2D" uid="uid://btkdqkjgsi3pn" path="res://resources/curves/space_invader.tres" id="7_qcw5v"]
 
 [resource]
 script = ExtResource("2_7m6sk")
 enemy_type = ExtResource("1_j7jpq")
-wave_curves = Array[Curve2D]([ExtResource("3_spuik"), ExtResource("4_x42dd"), ExtResource("3_0uqwr")])
+wave_curves = Array[Curve2D]([ExtResource("3_spuik"), ExtResource("4_x42dd"), ExtResource("3_0uqwr"), ExtResource("6_wjg4q"), ExtResource("7_qcw5v")])
 enemy_count = 2
 time_between_enemies = 1.5
 cooldown = 5.0
 wave_icon = ExtResource("4_sbn7k")
 time_between_enemies_growth = 0.5
-enemy_count_growth = 1
+enemy_count_growth = 1.0

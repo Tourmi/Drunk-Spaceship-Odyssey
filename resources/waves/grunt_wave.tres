@@ -1,18 +1,21 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=6 format=3 uid="uid://ulfpoqj4exia"]
+[gd_resource type="Resource" script_class="Wave" load_steps=9 format=3 uid="uid://ulfpoqj4exia"]
 
 [ext_resource type="Script" path="res://scripts/resources/wave.gd" id="1_5fc2t"]
 [ext_resource type="PackedScene" uid="uid://cf7nijfhekhb2" path="res://scenes/characters/enemies/grunt.tscn" id="1_j26af"]
 [ext_resource type="Curve2D" uid="uid://daqq6v465uhec" path="res://resources/curves/eye.tres" id="3_6xwwv"]
 [ext_resource type="Curve2D" uid="uid://ccac11ye8t6mv" path="res://resources/curves/loop.tres" id="4_1i7l3"]
 [ext_resource type="Texture2D" uid="uid://3v66sdewtjl7" path="res://resources/atlases/grunt_atlas.tres" id="4_qrm31"]
+[ext_resource type="Curve2D" uid="uid://dnmfcg35fo0nf" path="res://resources/curves/criss_cross.tres" id="5_b2k3t"]
+[ext_resource type="Curve2D" uid="uid://dwmg34dfrv6h4" path="res://resources/curves/aggro_l.tres" id="6_4mcu4"]
+[ext_resource type="Curve2D" uid="uid://d2qvtf4181r4" path="res://resources/curves/aggro_r.tres" id="7_xsrh7"]
 
 [resource]
 script = ExtResource("1_5fc2t")
 enemy_type = ExtResource("1_j26af")
-wave_curves = Array[Curve2D]([ExtResource("3_6xwwv"), ExtResource("4_1i7l3")])
+wave_curves = Array[Curve2D]([ExtResource("3_6xwwv"), ExtResource("4_1i7l3"), ExtResource("5_b2k3t"), ExtResource("6_4mcu4"), ExtResource("7_xsrh7"), ExtResource("3_6xwwv"), ExtResource("3_6xwwv"), ExtResource("5_b2k3t"), ExtResource("5_b2k3t"), ExtResource("4_1i7l3"), ExtResource("4_1i7l3")])
 enemy_count = 5
 time_between_enemies = 0.5
 cooldown = 3.0
 wave_icon = ExtResource("4_qrm31")
 time_between_enemies_growth = 1.0
-enemy_count_growth = 1
+enemy_count_growth = 1.0

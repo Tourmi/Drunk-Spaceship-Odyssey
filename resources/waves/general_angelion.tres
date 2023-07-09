@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=6 format=3 uid="uid://dt8ircigv56qb"]
+[gd_resource type="Resource" script_class="Wave" load_steps=7 format=3 uid="uid://dt8ircigv56qb"]
 
 [ext_resource type="Script" path="res://scripts/resources/wave.gd" id="1_combi"]
 [ext_resource type="PackedScene" uid="uid://d2kr8vy7b7dgu" path="res://scenes/characters/enemies/general_angelion.tscn" id="1_v4tid"]
 [ext_resource type="Curve2D" uid="uid://ccac11ye8t6mv" path="res://resources/curves/loop.tres" id="3_bixrd"]
 [ext_resource type="Curve2D" uid="uid://daqq6v465uhec" path="res://resources/curves/eye.tres" id="4_2ylhm"]
 [ext_resource type="Texture2D" uid="uid://f3gk4p4k5w4q" path="res://resources/atlases/general_atlas.tres" id="4_u8iv4"]
+[ext_resource type="Curve2D" uid="uid://dnmfcg35fo0nf" path="res://resources/curves/criss_cross.tres" id="5_wlkaa"]
 
 [resource]
 script = ExtResource("1_combi")
 enemy_type = ExtResource("1_v4tid")
-wave_curves = Array[Curve2D]([ExtResource("3_bixrd"), ExtResource("4_2ylhm")])
+wave_curves = Array[Curve2D]([ExtResource("3_bixrd"), ExtResource("4_2ylhm"), ExtResource("5_wlkaa")])
 enemy_count = 1
 time_between_enemies = 2.0
 cooldown = 10.0

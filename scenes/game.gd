@@ -5,6 +5,7 @@ extends Node2D
 @onready var game_bounds := %GameBounds as Area2D
 @onready var camera := $Camera2D as Camera
 @onready var fadeout := %Fadeout as Fadeout
+@onready var music := $music as AudioStreamPlayer2D
 
 var line_draw := 0
 
@@ -22,4 +23,6 @@ func _process(delta: float) -> void:
 	inited = Globals.hero != null or inited
 	if inited and not is_fading and get_tree().get_nodes_in_group("Hero").size() == 0:
 		is_fading = true
+		var tween := get_tree().create_tween()
+		tween.tween_property(music, "volume_db", -60, 2)
 		fadeout.fadeout()

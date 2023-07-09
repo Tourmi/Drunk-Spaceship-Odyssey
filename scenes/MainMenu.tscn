@@ -148,15 +148,18 @@ offset_top = 7.0
 offset_right = 315.0
 offset_bottom = 155.0
 text = "This game was a result of the GMTK Game Jam 2023
+The theme being \"Roles Reversed\", we ended up on a game where you help someone through a bullet hell
 
 Made from scratch with love by
  - Tourmi (Developer)
  - Sapheu (Artist)"
+autowrap_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_labcd")
 autoplay = true
 panning_strength = 0.0
+bus = &"Music"
 
 [connection signal="pressed" from="StartGame" to="StartGame" method="_on_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]

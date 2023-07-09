@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ug4m5hagellp"]
+[gd_scene load_steps=14 format=3 uid="uid://ug4m5hagellp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_aruh1"]
 [ext_resource type="PackedScene" uid="uid://c70l28kl2we5q" path="res://scenes/ui/right_panel.tscn" id="1_ric2v"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cj4kordkry1pi" path="res://scenes/obstacles/walls.tscn" id="6_2tn3r"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="9_x1roc"]
 [ext_resource type="PackedScene" uid="uid://df2quft4uebo6" path="res://scenes/ui/gameover.tscn" id="10_1ukek"]
+[ext_resource type="AudioStream" uid="uid://dvtcwy5w1logl" path="res://assets/sounds/gmtk2023.mp3" id="11_s5b33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slj7v"]
 size = Vector2(120, 180)
@@ -77,6 +78,7 @@ current = true
 
 [node name="Fadeout" parent="CanvasLayer" instance=ExtResource("10_1ukek")]
 unique_name_in_owner = true
+visible = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -1
@@ -86,3 +88,9 @@ modulate = Color(0, 0, 0, 1)
 offset_right = 321.0
 offset_bottom = 180.0
 texture = SubResource("PlaceholderTexture2D_4yig6")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_s5b33")
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
