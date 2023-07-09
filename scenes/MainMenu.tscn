@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://beer7a4p2r77f"]
+[gd_scene load_steps=8 format=3 uid="uid://beer7a4p2r77f"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_h2rvq"]
 [ext_resource type="Script" path="res://scenes/ui/load_game_button.gd" id="1_m07hg"]
 [ext_resource type="Texture2D" uid="uid://m7ryex8d4kw3" path="res://assets/tutorial_screens/turorial_screen.png" id="2_bp5p1"]
 [ext_resource type="PackedScene" uid="uid://bsm4xxapgoqqm" path="res://scenes/background.tscn" id="2_e8abg"]
 [ext_resource type="Theme" uid="uid://biwcsmriid58k" path="res://theme.tres" id="4_p81fa"]
+[ext_resource type="AudioStream" uid="uid://dcxphedxylx2j" path="res://assets/sounds/intro.mp3" id="6_labcd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d00d"]
 atlas = ExtResource("2_bp5p1")
@@ -20,6 +21,16 @@ script = ExtResource("1_h2rvq")
 
 [node name="Background" parent="." instance=ExtResource("2_e8abg")]
 self_modulate = Color(1, 1, 1, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 267.0
+offset_bottom = 32.0
+theme = ExtResource("4_p81fa")
+theme_override_font_sizes/font_size = 16
+text = "Drunk Spaceship Odyssey"
 
 [node name="StartGame" type="Button" parent="."]
 texture_filter = 1
@@ -138,19 +149,14 @@ offset_right = 315.0
 offset_bottom = 155.0
 text = "This game was a result of the GMTK Game Jam 2023
 
-Made with love by
- - Tourmi
- - Sapheu"
+Made from scratch with love by
+ - Tourmi (Developer)
+ - Sapheu (Artist)"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 7.0
-offset_right = 157.0
-offset_bottom = 32.0
-theme = ExtResource("4_p81fa")
-theme_override_font_sizes/font_size = 16
-text = "Drunk Spaceship Odyssey"
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_labcd")
+autoplay = true
+panning_strength = 0.0
 
 [connection signal="pressed" from="StartGame" to="StartGame" method="_on_pressed"]
 [connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
