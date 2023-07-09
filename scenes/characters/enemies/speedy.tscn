@@ -1,0 +1,45 @@
+[gd_scene load_steps=11 format=3 uid="uid://1orwprmsad0w"]
+
+[ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_hhtmg"]
+[ext_resource type="Texture2D" uid="uid://bc6xnuhmxfapr" path="res://assets/golden_sting.png" id="2_20jg2"]
+[ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="3_fesqy"]
+[ext_resource type="PackedScene" uid="uid://dplh0lamxkibi" path="res://scenes/powerups/bomb_powerup.tscn" id="4_fxyaw"]
+[ext_resource type="PackedScene" uid="uid://bh7h1iiqel8bm" path="res://scenes/powerups/fuel_powerup.tscn" id="5_clxdm"]
+[ext_resource type="PackedScene" uid="uid://d1qtarycyp4m8" path="res://scenes/powerups/health_powerup.tscn" id="6_g8cmv"]
+[ext_resource type="PackedScene" uid="uid://xqebytje2xrd" path="res://scenes/powerups/power_powerup.tscn" id="7_spfet"]
+[ext_resource type="PackedScene" uid="uid://cdeajfbfxxqs4" path="res://scenes/powerups/projectile_powerup.tscn" id="8_gvkxc"]
+[ext_resource type="PackedScene" uid="uid://075e63qes502" path="res://scenes/powerups/speed_powerup.tscn" id="9_go2nu"]
+[ext_resource type="PackedScene" uid="uid://cvnulbhpuis4p" path="res://scenes/powerups/firerate_powerup.tscn" id="10_nfb5p"]
+
+[node name="Enemy" instance=ExtResource("1_hhtmg")]
+enemy_name = "goldie"
+speed = 100.0
+score = 100
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_20jg2")
+
+[node name="Enemy_AI_Component" parent="." index="1"]
+firerate = 0.25
+
+[node name="Health_Component" parent="." index="2"]
+max_health = 50
+current_health = 50
+
+[node name="Shooter_Component" parent="." index="3"]
+damage = 10
+min_speed = 20.0
+max_speed = 40.0
+random_spread = 0.15
+count = 2
+
+[node name="RegularDrops" parent="." index="8"]
+base_odds_numerator = 50
+to_spawn = Array[PackedScene]([ExtResource("4_fxyaw"), ExtResource("6_g8cmv"), ExtResource("5_clxdm")])
+
+[node name="DropOnDeathComponent" type="Node2D" parent="." index="9" node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_fesqy")
+is_guaranteed = true
+is_picked = true
+to_spawn = Array[PackedScene]([ExtResource("7_spfet"), ExtResource("8_gvkxc"), ExtResource("9_go2nu"), ExtResource("10_nfb5p")])
+health_component = NodePath("../Health_Component")

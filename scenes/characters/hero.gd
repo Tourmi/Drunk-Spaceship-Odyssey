@@ -7,11 +7,12 @@ const time_ahead := 0.1
 const max_dist := 25
 const target_dist_from_walls := 20
 
-const RANDOM_DIR_INFLUENCE := 1
+const RANDOM_DIR_INFLUENCE := 5
 const AVOID_BULLETS_INFLUENCE := 20
-const AVOID_ENEMIES_INFLUENCE := 15
-const AVOID_WALLS_INFLUENCE := 8
-const POWERUP_INFLUENCE := 10
+const AVOID_ENEMIES_INFLUENCE := 10
+const AVOID_WALLS_INFLUENCE := 12
+const POWERUP_INFLUENCE := 15
+const DOWN_BIAS_INFLUENCE := 10
 
 @export var bomb_cooldown := 3.0
 @export var min_bullet_distance := 100
@@ -49,6 +50,7 @@ func _process(delta: float) -> void:
 	calc += _get_avoid_enemies_direction() * AVOID_ENEMIES_INFLUENCE
 	calc += _get_avoid_walls_direction() * AVOID_WALLS_INFLUENCE
 	calc += _get_direction_to_powerup() * POWERUP_INFLUENCE
+	calc += _get_down_bias() * DOWN_BIAS_INFLUENCE
 
 	wanted_direction = (wanted_direction * 2 + calc.normalized()).normalized()
 
@@ -69,10 +71,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var bullet := body as Bullet
 		health_component.current_health -= bullet.damage
 		bullet.queue_free()
+
+func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if body is Powerup:
 		var powerup := body as Powerup
 		powerup.pickup()
-
 
 func _get_random_direction() -> Vector2:
 	return (wanted_direction.rotated(randf() * TAU / 8 - TAU / 16)).normalized()
@@ -137,6 +140,10 @@ func _should_ignore_powerup(powerup : Powerup) -> bool:
 		if float(fuel_component.current_fuel) / fuel_component.max_fuel >= 0.75: return true
 	return false
 
+func _get_down_bias() -> Vector2:
+	if position.y < 100: return Vector2(0, 1)
+	return Vector2()
+
 func _set_bombs(amount : int) -> void:
 	bombs_changed.emit(bomb_count, amount)
 	bomb_count = amount
@@ -163,3 +170,4 @@ func _on_health_component_health_changed(new_amount : int, old_amount : int) -> 
 
 func _on_health_component_health_empty() -> void:
 	Globals.camera.shake(4, 0.5)
+

@@ -1,8 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf7nijfhekhb2"]
+[gd_scene load_steps=15 format=3 uid="uid://cf7nijfhekhb2"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_qilv3"]
 [ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="2_qsrb7"]
+[ext_resource type="PackedScene" uid="uid://dplh0lamxkibi" path="res://scenes/powerups/bomb_powerup.tscn" id="3_2jl2x"]
 [ext_resource type="PackedScene" uid="uid://cdeajfbfxxqs4" path="res://scenes/powerups/projectile_powerup.tscn" id="3_cka4g"]
+[ext_resource type="PackedScene" uid="uid://bh7h1iiqel8bm" path="res://scenes/powerups/fuel_powerup.tscn" id="5_rgcy7"]
+[ext_resource type="PackedScene" uid="uid://d1u76vo1js3o2" path="res://scenes/powerups/health_pickup.tscn" id="6_60xk4"]
+[ext_resource type="PackedScene" uid="uid://xqebytje2xrd" path="res://scenes/powerups/power_powerup.tscn" id="6_tpkhs"]
+[ext_resource type="PackedScene" uid="uid://075e63qes502" path="res://scenes/powerups/speed_powerup.tscn" id="7_3y83x"]
+[ext_resource type="PackedScene" uid="uid://iitsx7jjs4b1" path="res://scenes/powerups/fuel_pickup.tscn" id="7_g8s5p"]
+[ext_resource type="PackedScene" uid="uid://cvnulbhpuis4p" path="res://scenes/powerups/firerate_powerup.tscn" id="8_6074j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0m3k"]
 radius = 3.0
@@ -47,6 +54,7 @@ _data = {
 [node name="Enemy" instance=ExtResource("1_qilv3")]
 enemy_name = "grunt"
 speed = 40.0
+score = 10
 
 [node name="Health_Component" parent="." index="2"]
 max_health = 50
@@ -75,8 +83,9 @@ position = Vector2(2, 0)
 script = ExtResource("2_qsrb7")
 is_picked = true
 base_odds_numerator = 1
-to_spawn = Array[PackedScene]([ExtResource("3_cka4g")])
+to_spawn = Array[PackedScene]([ExtResource("3_cka4g"), ExtResource("3_2jl2x"), ExtResource("5_rgcy7"), ExtResource("6_tpkhs"), ExtResource("7_3y83x"), ExtResource("8_6074j")])
 health_component = NodePath("../Health_Component")
 
 [node name="RegularDrops" parent="." index="9"]
-base_odds_numerator = 5
+base_odds_numerator = 10
+to_spawn = Array[PackedScene]([ExtResource("6_60xk4"), ExtResource("7_g8s5p"), ExtResource("7_g8s5p")])

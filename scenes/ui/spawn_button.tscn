@@ -1,16 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqxju1ulw2ldk"]
+[gd_scene load_steps=6 format=3 uid="uid://dqxju1ulw2ldk"]
 
 [ext_resource type="Texture2D" uid="uid://3v66sdewtjl7" path="res://resources/atlases/grunt_atlas.tres" id="1_pvweh"]
 [ext_resource type="Script" path="res://scenes/ui/spawn_button.gd" id="1_x3p6m"]
 [ext_resource type="Resource" uid="uid://ulfpoqj4exia" path="res://resources/waves/grunt_wave.tres" id="2_d4srn"]
+[ext_resource type="Texture2D" uid="uid://1yabiyyvbh43" path="res://assets/whitepixel.png" id="4_iyntn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lkw3c"]
 
 [node name="SpawnButton" type="Button"]
+clip_children = 2
 texture_filter = 1
-offset_right = 16.0
+custom_minimum_size = Vector2(24, 0)
+offset_right = 24.0
 offset_bottom = 16.0
+theme_override_constants/outline_size = 1
+theme_override_constants/icon_max_width = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lkw3c")
 icon = ExtResource("1_pvweh")
+clip_text = true
 icon_alignment = 1
 script = ExtResource("1_x3p6m")
 wave = ExtResource("2_d4srn")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+self_modulate = Color(0, 0, 0, 0.705882)
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 90.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("4_iyntn")
+radial_initial_angle = 360.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureProgressBar"]
+visible = false
+self_modulate = Color(0, 0, 0, 0.721569)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_iyntn")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

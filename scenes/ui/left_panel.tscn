@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://wjvxpan3jpey"]
+[gd_scene load_steps=22 format=3 uid="uid://wjvxpan3jpey"]
 
 [ext_resource type="Script" path="res://scenes/ui/left_panel.gd" id="1_6sc07"]
 [ext_resource type="Texture2D" uid="uid://b3fxmfrnw6ish" path="res://assets/leftlayout.png" id="2_1akfs"]
 [ext_resource type="PackedScene" uid="uid://drksy8gxidviw" path="res://scenes/ui/bomb_icon.tscn" id="2_t2vmu"]
 [ext_resource type="Texture2D" uid="uid://dactdq5jamt1m" path="res://assets/health.png" id="3_ndd2w"]
+[ext_resource type="Theme" uid="uid://biwcsmriid58k" path="res://theme.tres" id="4_hpw4f"]
 [ext_resource type="Texture2D" uid="uid://bsud5s0opghv3" path="res://assets/hp_bar.png" id="4_m7s1y"]
 [ext_resource type="Texture2D" uid="uid://bb5w7rcllq68x" path="res://assets/fuel_bar.png" id="6_jo6td"]
 [ext_resource type="Texture2D" uid="uid://d2l4l7vrw42vg" path="res://assets/fuel.png" id="7_umyyh"]
@@ -190,17 +191,34 @@ layout_mode = 2
 [node name="Multiplier" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("4_hpw4f")
+text = "mult"
 horizontal_alignment = 2
 
 [node name="Difficulty" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("4_hpw4f")
+text = "diff"
 horizontal_alignment = 2
 
 [node name="BombsContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 alignment = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_hpw4f")
+text = "Score
+0000000"
+horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "regular"
