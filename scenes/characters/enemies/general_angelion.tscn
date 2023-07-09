@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2kr8vy7b7dgu"]
+[gd_scene load_steps=16 format=3 uid="uid://d2kr8vy7b7dgu"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_w53xi"]
 [ext_resource type="Texture2D" uid="uid://cl70qd2f8y0rr" path="res://assets/general_angelion2.0.png" id="2_hgpmw"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://xqebytje2xrd" path="res://scenes/powerups/power_powerup.tscn" id="8_2dglb"]
 [ext_resource type="PackedScene" uid="uid://075e63qes502" path="res://scenes/powerups/speed_powerup.tscn" id="9_hwt3i"]
 [ext_resource type="PackedScene" uid="uid://cvnulbhpuis4p" path="res://scenes/powerups/firerate_powerup.tscn" id="10_0ot7g"]
+[ext_resource type="PackedScene" uid="uid://d1u76vo1js3o2" path="res://scenes/powerups/health_pickup.tscn" id="11_emxqm"]
+[ext_resource type="PackedScene" uid="uid://iitsx7jjs4b1" path="res://scenes/powerups/fuel_pickup.tscn" id="12_kiv8y"]
 
 [sub_resource type="Animation" id="Animation_wxcyd"]
 length = 0.001
@@ -89,3 +91,4 @@ health_component = NodePath("../Health_Component")
 
 [node name="RegularDrops" parent="." index="9"]
 is_guaranteed = true
+to_spawn = Array[PackedScene]([ExtResource("11_emxqm"), ExtResource("12_kiv8y"), ExtResource("12_kiv8y"), ExtResource("12_kiv8y")])

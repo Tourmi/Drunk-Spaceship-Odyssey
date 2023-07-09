@@ -89,4 +89,4 @@ health_component = NodePath("../Health_Component")
 
 [node name="RegularDrops" parent="." index="9"]
 base_odds_numerator = 10
-to_spawn = Array[PackedScene]([ExtResource("6_60xk4"), ExtResource("7_g8s5p"), ExtResource("7_g8s5p")])
+to_spawn = Array[PackedScene]([ExtResource("6_60xk4"), ExtResource("7_g8s5p"), ExtResource("7_g8s5p"), ExtResource("7_g8s5p")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://sijy754x7vq"]
+[gd_scene load_steps=18 format=3 uid="uid://sijy754x7vq"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_0l03k"]
 [ext_resource type="Texture2D" uid="uid://bttvqoisg30c0" path="res://assets/chrgert.png" id="2_q1org"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://xqebytje2xrd" path="res://scenes/powerups/power_powerup.tscn" id="9_o0pk4"]
 [ext_resource type="PackedScene" uid="uid://075e63qes502" path="res://scenes/powerups/speed_powerup.tscn" id="10_4o8vg"]
 [ext_resource type="PackedScene" uid="uid://cvnulbhpuis4p" path="res://scenes/powerups/firerate_powerup.tscn" id="11_spl6f"]
+[ext_resource type="PackedScene" uid="uid://d1u76vo1js3o2" path="res://scenes/powerups/health_pickup.tscn" id="12_xr1sl"]
+[ext_resource type="PackedScene" uid="uid://iitsx7jjs4b1" path="res://scenes/powerups/fuel_pickup.tscn" id="13_eq8ee"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vuwi"]
 radius = 5.0
@@ -90,5 +92,8 @@ is_picked = true
 base_odds_numerator = 10
 to_spawn = Array[PackedScene]([ExtResource("5_74tqi"), ExtResource("6_0t2p4"), ExtResource("7_sk31j"), ExtResource("8_exym3"), ExtResource("9_o0pk4"), ExtResource("10_4o8vg"), ExtResource("11_spl6f")])
 health_component = NodePath("../Health_Component")
+
+[node name="RegularDrops" parent="." index="9"]
+to_spawn = Array[PackedScene]([ExtResource("12_xr1sl"), ExtResource("13_eq8ee"), ExtResource("13_eq8ee"), ExtResource("13_eq8ee")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]
