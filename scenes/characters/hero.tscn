@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3nf17l55ya4t"]
+[gd_scene load_steps=19 format=3 uid="uid://b3nf17l55ya4t"]
 
 [ext_resource type="Script" path="res://scenes/characters/hero.gd" id="1_q5ie8"]
 [ext_resource type="PackedScene" uid="uid://iiiwl66gsglr" path="res://scenes/bomb_explosion.tscn" id="2_4cock"]
@@ -14,15 +14,16 @@
 [ext_resource type="Script" path="res://scripts/components/fuel_component.gd" id="10_ig05v"]
 [ext_resource type="PackedScene" uid="uid://5wqi0dx00afu" path="res://scenes/effects/player_explosion.tscn" id="10_m17i8"]
 [ext_resource type="AudioStream" uid="uid://bsxyjoiirew2o" path="res://assets/sounds/player_fuel.wav" id="14_bkde8"]
+[ext_resource type="AudioStream" uid="uid://c3ps4781bq4n3" path="res://assets/sounds/alarm.wav" id="15_2ikxx"]
 [ext_resource type="AudioStream" uid="uid://dklou7nou8s5n" path="res://assets/sounds/player_powerup.wav" id="15_ooarr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3jy3i"]
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdqjg"]
-radius = 25.0
+radius = 16.0312
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_q5ie8")
@@ -39,12 +40,20 @@ texture_filter = 1
 position = Vector2(0, 4)
 texture = ExtResource("2_5t1vk")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BulletArea" type="Area2D" parent="."]
 collision_mask = 22
 
-[node name="BulletHitbox" type="CollisionPolygon2D" parent="Area2D"]
+[node name="BulletHitbox" type="CollisionPolygon2D" parent="BulletArea"]
 position = Vector2(0, 4)
-polygon = PackedVector2Array(0, -5, -6, 5, 6, 5)
+polygon = PackedVector2Array(0, -1, -2, 2, 2, 2)
+
+[node name="PickupArea" type="Area2D" parent="."]
+position = Vector2(1, 0)
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PickupArea"]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(0, -3, -7, 10, 7, 10)
 
 [node name="Health_Component" type="Node" parent="." node_paths=PackedStringArray("heal_sound_effect", "hurt_sound_effect")]
 script = ExtResource("3_1w40q")
@@ -97,20 +106,25 @@ health_component = NodePath("../Health_Component")
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="PanicArea"]
-polygon = PackedVector2Array(0, -5, -10, 12, 10, 12)
+polygon = PackedVector2Array(0, -3, -7, 10, 7, 10)
 
-[node name="FuelComponent" type="Node" parent="." node_paths=PackedStringArray("health_component", "fuel_up_sound")]
+[node name="FuelComponent" type="Node" parent="." node_paths=PackedStringArray("health_component", "fuel_up_sound", "out_of_fuel")]
 script = ExtResource("10_ig05v")
 health_component = NodePath("../Health_Component")
 max_fuel = 1000
 current_fuel = 1000
 base_drain = 20.0
 drain_growth = 1.0
-health_drain_multiplier = 0.5
+health_drain_multiplier = 0.25
 fuel_up_sound = NodePath("AudioStreamPlayer2D")
+out_of_fuel = NodePath("OutOfFuel")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="FuelComponent"]
 stream = ExtResource("14_bkde8")
+volume_db = -12.0
+
+[node name="OutOfFuel" type="AudioStreamPlayer2D" parent="FuelComponent"]
+stream = ExtResource("15_2ikxx")
 volume_db = -12.0
 
 [node name="PowerupSound" type="AudioStreamPlayer2D" parent="."]
@@ -118,6 +132,7 @@ stream = ExtResource("15_ooarr")
 volume_db = -9.0
 max_polyphony = 2
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="BulletArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
 [connection signal="health_changed" from="Health_Component" to="." method="_on_health_component_health_changed"]
 [connection signal="health_empty" from="Health_Component" to="." method="_on_health_component_health_empty"]

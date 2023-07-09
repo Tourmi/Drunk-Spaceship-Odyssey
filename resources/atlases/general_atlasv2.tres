@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dvqd720rfydg2"]
+
+[ext_resource type="Texture2D" uid="uid://bei01j2gkky4g" path="res://assets/evil_gelion.png" id="1_lkmun"]
+
+[resource]
+atlas = ExtResource("1_lkmun")
+region = Rect2(0, 0, 16, 13)

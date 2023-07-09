@@ -21,6 +21,7 @@ func _on_health_expired() -> void:
 	else: for entity in to_spawn: _spawn_entity(entity)
 
 func _spawn_entity(entity : PackedScene) -> void:
+	if entity == null: return
 	var instance := entity.instantiate() as Node2D
 	instance.position = self.global_position
 	call_deferred("_add_instance", instance)

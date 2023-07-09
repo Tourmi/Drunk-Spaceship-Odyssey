@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dx88q2whej4e8"]
+
+[ext_resource type="Texture2D" uid="uid://bc6xnuhmxfapr" path="res://assets/golden_sting.png" id="1_ewyyw"]
+
+[resource]
+atlas = ExtResource("1_ewyyw")
+region = Rect2(0, 0, 8, 8)

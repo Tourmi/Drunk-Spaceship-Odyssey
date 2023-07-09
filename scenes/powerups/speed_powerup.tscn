@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://075e63qes502"]
+
+[ext_resource type="Script" path="res://scenes/powerups/speed_powerup.gd" id="1_bomom"]
+[ext_resource type="Texture2D" uid="uid://jfncpslu5vgd" path="res://assets/sepeeeeedt.png" id="2_651h4"]
+[ext_resource type="Script" path="res://scripts/components/delete_offscreen_component.gd" id="3_dlo5i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1i5eg"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_nnt0k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeedPickup/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w1il3"]
+resource_name = "regular"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeedPickup/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_naj3o"]
+_data = {
+"RESET": SubResource("Animation_nnt0k"),
+"regular": SubResource("Animation_w1il3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl5wu"]
+size = Vector2(6, 4)
+
+[node name="SpeedPickup" type="CharacterBody2D" groups=["Powerup"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_bomom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1i5eg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_651h4")
+hframes = 6
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "regular"
+speed_scale = 0.8
+libraries = {
+"": SubResource("AnimationLibrary_naj3o")
+}
+
+[node name="DeleteOffscreenComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_dlo5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeleteOffscreenComponent"]
+shape = SubResource("RectangleShape2D_jl5wu")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=7 format=3 uid="uid://do0r0wwgtohtn"]
+
+[ext_resource type="PackedScene" uid="uid://dnb2ugx1os522" path="res://scenes/characters/enemies/chargerv2.tscn" id="1_1eqe2"]
+[ext_resource type="Script" path="res://scripts/resources/wave.gd" id="2_g4uhu"]
+[ext_resource type="Curve2D" uid="uid://daqq6v465uhec" path="res://resources/curves/eye.tres" id="3_nin1x"]
+[ext_resource type="Curve2D" uid="uid://ccac11ye8t6mv" path="res://resources/curves/loop.tres" id="4_j7qom"]
+[ext_resource type="Curve2D" uid="uid://cfxnah7g7cnt0" path="res://resources/curves/c_back_and_forth.tres" id="5_r4g3i"]
+[ext_resource type="Texture2D" uid="uid://cm854drs5qyno" path="res://resources/atlases/chargerv2_atlas.tres" id="6_0job2"]
+
+[resource]
+script = ExtResource("2_g4uhu")
+enemy_type = ExtResource("1_1eqe2")
+wave_curves = Array[Curve2D]([ExtResource("3_nin1x"), ExtResource("4_j7qom"), ExtResource("5_r4g3i")])
+enemy_count = 2
+time_between_enemies = 2.0
+cooldown = 10.0
+wave_icon = ExtResource("6_0job2")
+time_between_enemies_growth = 1.0
+enemy_count_growth = 1

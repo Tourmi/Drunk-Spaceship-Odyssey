@@ -7,6 +7,7 @@ extends PanelContainer
 @onready var hero_fuel := %CurrentFuel as TextureProgressBar
 @onready var multiplier := %Multiplier as Label
 @onready var difficulty := %Difficulty as Label
+@onready var score := %Score as Label
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var bombs_container := %BombsContainer as HFlowContainer
 
@@ -15,6 +16,7 @@ var inited := false
 func _process(delta: float) -> void:
 	multiplier.text = "Mult:%.2f" % Globals.get_multiplier()
 	difficulty.text = "Diff:%.2f" % (Globals.get_difficulty() + 1)
+	score.text = "Score\n%0000000d" % Globals.score
 	if Globals.hero == null: return
 	hero_health.max_value = Globals.hero.health_component.max_health
 	tween_health.max_value = Globals.hero.health_component.max_health

@@ -5,11 +5,11 @@ extends Node2D
 
 func spawn_wave(wave : Wave) -> void:
 	var path := path_scene.instantiate() as Path2D
-	path.curve = wave.wave_curve
+	path.curve = wave.wave_curves.pick_random()
 	var temp = Node2D.new()
 	path.add_child(temp)
 	add_child(path)
-	var direction = 1 if randi() % 2 == 0 else -1
+	var direction = [1, -1].pick_random()
 	var actual_count = floori(wave.enemy_count * (1 + wave.enemy_count_growth * Globals.get_difficulty()))
 	var actual_time = wave.time_between_enemies / (1 + wave.time_between_enemies_growth * Globals.get_difficulty())
 	for i in actual_count:

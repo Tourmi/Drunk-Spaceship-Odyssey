@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2kr8vy7b7dgu"]
+[gd_scene load_steps=14 format=3 uid="uid://d2kr8vy7b7dgu"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_w53xi"]
 [ext_resource type="Texture2D" uid="uid://cl70qd2f8y0rr" path="res://assets/general_angelion2.0.png" id="2_hgpmw"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dplh0lamxkibi" path="res://scenes/powerups/bomb_powerup.tscn" id="4_kpv4x"]
 [ext_resource type="PackedScene" uid="uid://cdeajfbfxxqs4" path="res://scenes/powerups/projectile_powerup.tscn" id="5_4tj82"]
 [ext_resource type="PackedScene" uid="uid://bh7h1iiqel8bm" path="res://scenes/powerups/fuel_powerup.tscn" id="6_cw7sm"]
+[ext_resource type="PackedScene" uid="uid://d1qtarycyp4m8" path="res://scenes/powerups/health_powerup.tscn" id="7_r3ym6"]
+[ext_resource type="PackedScene" uid="uid://xqebytje2xrd" path="res://scenes/powerups/power_powerup.tscn" id="8_2dglb"]
+[ext_resource type="PackedScene" uid="uid://075e63qes502" path="res://scenes/powerups/speed_powerup.tscn" id="9_hwt3i"]
+[ext_resource type="PackedScene" uid="uid://cvnulbhpuis4p" path="res://scenes/powerups/firerate_powerup.tscn" id="10_0ot7g"]
 
 [sub_resource type="Animation" id="Animation_wxcyd"]
 length = 0.001
@@ -46,6 +50,7 @@ _data = {
 }
 
 [node name="Enemy" instance=ExtResource("1_w53xi")]
+score = 100
 health_growth = 3.0
 bullet_speed_growth = 1.0
 bullet_count_growth = 0.2
@@ -79,5 +84,8 @@ script = ExtResource("3_20qmt")
 is_guaranteed = true
 is_picked = true
 base_odds_numerator = 1
-to_spawn = Array[PackedScene]([ExtResource("4_kpv4x"), ExtResource("5_4tj82"), ExtResource("6_cw7sm")])
+to_spawn = Array[PackedScene]([ExtResource("4_kpv4x"), ExtResource("5_4tj82"), ExtResource("6_cw7sm"), ExtResource("7_r3ym6"), ExtResource("8_2dglb"), ExtResource("9_hwt3i"), ExtResource("10_0ot7g")])
 health_component = NodePath("../Health_Component")
+
+[node name="RegularDrops" parent="." index="9"]
+is_guaranteed = true

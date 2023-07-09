@@ -12,6 +12,7 @@ signal fuel_changed(new: int, old: int)
 @export var drain_growth : float
 @export var health_drain_multiplier : float
 @export var fuel_up_sound : AudioStreamPlayer2D
+@export var out_of_fuel : AudioStreamPlayer2D
 
 var curr_drained : float
 var curr_health_drain : float
@@ -42,3 +43,7 @@ func _set_fuel(value : int) -> void:
 	if new > current_fuel and fuel_up_sound != null: fuel_up_sound.play()
 	fuel_changed.emit(new, current_fuel)
 	current_fuel = new
+
+	if out_of_fuel == null: return
+	if current_fuel == 0 and not out_of_fuel.playing: out_of_fuel.play()
+	if current_fuel > 0 and out_of_fuel.playing: out_of_fuel.stop()

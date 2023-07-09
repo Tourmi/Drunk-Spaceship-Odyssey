@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ug4m5hagellp"]
+[gd_scene load_steps=17 format=3 uid="uid://ug4m5hagellp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_aruh1"]
 [ext_resource type="Texture2D" uid="uid://cmp3cgcchj24k" path="res://assets/bckgrindpng.png" id="1_pi6ah"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scenes/wave_spawner.gd" id="5_d4cyb"]
 [ext_resource type="PackedScene" uid="uid://cj4kordkry1pi" path="res://scenes/obstacles/walls.tscn" id="6_2tn3r"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="9_x1roc"]
+[ext_resource type="Texture2D" uid="uid://1yabiyyvbh43" path="res://assets/whitepixel.png" id="10_ij8dw"]
+[ext_resource type="Script" path="res://scenes/fadeout.gd" id="11_edcca"]
 
 [sub_resource type="Animation" id="Animation_bc7wf"]
 length = 0.001
@@ -123,6 +125,16 @@ current = true
 [node name="LeftPanel" parent="CanvasLayer" instance=ExtResource("3_j66l3")]
 
 [node name="RightPanel" parent="CanvasLayer" instance=ExtResource("1_ric2v")]
+
+[node name="Fadeout" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0, 0, 0, 0.858824)
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+texture = ExtResource("10_ij8dw")
+script = ExtResource("11_edcca")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -1
