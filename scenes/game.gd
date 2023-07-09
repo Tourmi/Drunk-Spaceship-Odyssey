@@ -15,4 +15,3 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	camera.offset = Vector2()
-

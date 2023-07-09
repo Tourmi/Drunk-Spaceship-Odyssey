@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh7h1iiqel8bm"]
+
+[ext_resource type="PackedScene" uid="uid://y4krjdkwng28" path="res://scenes/powerups/base_powerup.tscn" id="1_0i2j0"]
+[ext_resource type="Texture2D" uid="uid://h3tuurkedbpr" path="res://assets/juice_cell.png" id="2_0wjc3"]
+[ext_resource type="Script" path="res://scenes/powerups/fuel_powerup.gd" id="2_spd52"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xk5dy"]
+radius = 5.09902
+
+[sub_resource type="Animation" id="Animation_h8dh0"]
+resource_name = "regular"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_4ic8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvt53"]
+_data = {
+"RESET": SubResource("Animation_4ic8c"),
+"regular": SubResource("Animation_h8dh0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hoyc"]
+size = Vector2(8, 8)
+
+[node name="BasePowerup" instance=ExtResource("1_0i2j0")]
+script = ExtResource("2_spd52")
+fuel_amount = 50
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_xk5dy")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_0wjc3")
+hframes = 6
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "regular"
+libraries = {
+"": SubResource("AnimationLibrary_kvt53")
+}
+
+[node name="CollisionShape2D" parent="DeleteOffscreenComponent" index="0"]
+shape = SubResource("RectangleShape2D_5hoyc")

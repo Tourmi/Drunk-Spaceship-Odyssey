@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	difficulty += 0.01 * delta
 
 func get_multiplier() -> float:
+	return 1
 	return ((spawner.get_child_count() / 10.0) + 1) * difficulty
 
 func get_difficulty() -> float:

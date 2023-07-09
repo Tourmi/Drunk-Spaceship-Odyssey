@@ -74,5 +74,9 @@ position = Vector2(2, 0)
 [node name="DropOnDeathComponent" type="Node2D" parent="." index="8" node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_qsrb7")
 is_picked = true
+base_odds_numerator = 1
 to_spawn = Array[PackedScene]([ExtResource("3_cka4g")])
 health_component = NodePath("../Health_Component")
+
+[node name="RegularDrops" parent="." index="9"]
+base_odds_numerator = 5

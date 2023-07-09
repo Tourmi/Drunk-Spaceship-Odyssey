@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sijy754x7vq"]
+[gd_scene load_steps=12 format=3 uid="uid://sijy754x7vq"]
 
 [ext_resource type="PackedScene" uid="uid://8uikrl1k17ve" path="res://scenes/characters/enemy.tscn" id="1_0l03k"]
 [ext_resource type="Texture2D" uid="uid://bttvqoisg30c0" path="res://assets/chrgert.png" id="2_q1org"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="4_djosb"]
 [ext_resource type="PackedScene" uid="uid://dplh0lamxkibi" path="res://scenes/powerups/bomb_powerup.tscn" id="5_74tqi"]
 [ext_resource type="PackedScene" uid="uid://cdeajfbfxxqs4" path="res://scenes/powerups/projectile_powerup.tscn" id="6_0t2p4"]
+[ext_resource type="PackedScene" uid="uid://bh7h1iiqel8bm" path="res://scenes/powerups/fuel_powerup.tscn" id="7_sk31j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vuwi"]
 radius = 5.0
@@ -82,5 +83,8 @@ position = Vector2(2, 0)
 
 [node name="DropOnDeathComponent" type="Node2D" parent="." index="8" node_paths=PackedStringArray("health_component")]
 script = ExtResource("4_djosb")
-to_spawn = Array[PackedScene]([ExtResource("5_74tqi"), ExtResource("6_0t2p4")])
+base_odds_numerator = 10
+to_spawn = Array[PackedScene]([ExtResource("5_74tqi"), ExtResource("6_0t2p4"), ExtResource("7_sk31j")])
 health_component = NodePath("../Health_Component")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]

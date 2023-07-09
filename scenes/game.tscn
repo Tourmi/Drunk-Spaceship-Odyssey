@@ -58,6 +58,7 @@ texture_filter = 1
 script = ExtResource("1_aruh1")
 
 [node name="Background" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.662745)
 texture_filter = 1
 position = Vector2(160, 90)
 texture = ExtResource("1_pi6ah")
@@ -113,6 +114,9 @@ shape = SubResource("RectangleShape2D_slj7v")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
 script = ExtResource("9_x1roc")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
