@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://iiiwl66gsglr"]
+[gd_scene load_steps=4 format=3 uid="uid://iiiwl66gsglr"]
 
 [ext_resource type="Script" path="res://scenes/bomb_explosion.gd" id="1_v0pcx"]
+[ext_resource type="AudioStream" uid="uid://bo8hrtqn5k2ap" path="res://assets/sounds/player_bomb.wav" id="2_qaaxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_57lvk"]
 radius = 2.0
@@ -18,6 +19,11 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Outer"]
 shape = SubResource("CircleShape2D_57lvk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qaaxw")
+volume_db = -12.0
+autoplay = true
 
 [connection signal="area_entered" from="Outer" to="." method="_on_outer_area_entered"]
 [connection signal="body_entered" from="Outer" to="." method="_on_outer_body_entered"]

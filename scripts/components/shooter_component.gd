@@ -11,6 +11,7 @@ extends Node2D
 @export var count := 1
 @export_range(0, 1) var even_spread : float
 
+@export var shoot_sound : AudioStreamPlayer2D
 
 func _ready() -> void:
 	pass
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 	pass
 
 func shoot(direction: Vector2) -> void:
+	if shoot_sound != null: shoot_sound.play()
 	var angle_delta := 0.0
 	if even_spread > 0 and count > 1:
 		direction = direction.rotated(-PI * even_spread)

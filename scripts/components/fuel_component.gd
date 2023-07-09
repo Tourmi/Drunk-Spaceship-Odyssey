@@ -11,6 +11,7 @@ signal fuel_changed(new: int, old: int)
 @export var base_drain : float
 @export var drain_growth : float
 @export var health_drain_multiplier : float
+@export var fuel_up_sound : AudioStreamPlayer2D
 
 var curr_drained : float
 var curr_health_drain : float
@@ -38,5 +39,6 @@ func _set_max_fuel(value : int) -> void:
 func _set_fuel(value : int) -> void:
 	var new := clampi(value, 0, max_fuel)
 	if new == current_fuel: return
+	if new > current_fuel and fuel_up_sound != null: fuel_up_sound.play()
 	fuel_changed.emit(new, current_fuel)
-	current_fuel = value
+	current_fuel = new

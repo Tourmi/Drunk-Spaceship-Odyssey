@@ -30,6 +30,7 @@ var curr_bomb_cooldown : float
 @onready var fuel_component := $FuelComponent as FuelComponent
 @onready var avoid_area := $AvoidanceArea as Area2D
 @onready var panic_area := $PanicArea as Area2D
+@onready var powerup_sound := $PowerupSound as AudioStreamPlayer2D
 
 func _ready() -> void:
 	bomb_count = 1

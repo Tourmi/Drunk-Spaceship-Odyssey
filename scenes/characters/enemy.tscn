@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://8uikrl1k17ve"]
+[gd_scene load_steps=14 format=3 uid="uid://8uikrl1k17ve"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemy.gd" id="1_56mee"]
 [ext_resource type="Texture2D" uid="uid://djegtw2p4ix8o" path="res://assets/peeceshipt.png" id="2_iku7c"]
 [ext_resource type="Script" path="res://scripts/components/enemy_ai_component.gd" id="3_311je"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="4_5xjrc"]
 [ext_resource type="Script" path="res://scripts/components/shooter_component.gd" id="5_ss1pt"]
+[ext_resource type="AudioStream" uid="uid://bl07pg3fabchl" path="res://assets/sounds/enemy_hurt.wav" id="5_xlm8w"]
 [ext_resource type="PackedScene" uid="uid://yrhwlxsiqphe" path="res://scenes/bullets/bullet.tscn" id="6_ooec5"]
 [ext_resource type="Script" path="res://scripts/components/death_component.gd" id="7_mieof"]
 [ext_resource type="Script" path="res://scripts/components/drop_on_death_component.gd" id="8_tkxor"]
@@ -39,10 +40,15 @@ script = ExtResource("3_311je")
 firerate = 2.0
 shooter_component = NodePath("../Shooter_Component")
 
-[node name="Health_Component" type="Node" parent="."]
+[node name="Health_Component" type="Node" parent="." node_paths=PackedStringArray("hurt_sound_effect")]
 script = ExtResource("4_5xjrc")
 max_health = 100
 current_health = 100
+hurt_sound_effect = NodePath("DamageSound")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="Health_Component"]
+stream = ExtResource("5_xlm8w")
+volume_db = -9.0
 
 [node name="Shooter_Component" type="Node2D" parent="."]
 position = Vector2(4, 0)
