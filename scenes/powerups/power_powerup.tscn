@@ -52,6 +52,7 @@ size = Vector2(6, 4)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_ia0rm")
+damage_amount = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1i5eg")

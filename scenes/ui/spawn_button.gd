@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	if Globals.spawner == null: return
+	Globals.click.play()
 	Globals.spawner.spawn_wave(wave)
 	curr_cooldown = wave.cooldown
 	progress.max_value = curr_cooldown * 100

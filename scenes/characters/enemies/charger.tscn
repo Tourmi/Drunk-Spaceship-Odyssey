@@ -58,15 +58,13 @@ enemy_name = "charger"
 speed = 20.0
 look_down = true
 score = 50
+speed_growth = 0.75
+health_growth = 3.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_q1org")
 hframes = 9
 vframes = 2
-
-[node name="Health_Component" parent="." index="2"]
-max_health = 200
-current_health = 200
 
 [node name="Shooter_Component" parent="." index="3"]
 bullet_to_spawn = ExtResource("3_dbpv0")

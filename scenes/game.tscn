@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ug4m5hagellp"]
+[gd_scene load_steps=15 format=3 uid="uid://ug4m5hagellp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_aruh1"]
 [ext_resource type="PackedScene" uid="uid://c70l28kl2we5q" path="res://scenes/ui/right_panel.tscn" id="1_ric2v"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/camera.gd" id="9_x1roc"]
 [ext_resource type="PackedScene" uid="uid://df2quft4uebo6" path="res://scenes/ui/gameover.tscn" id="10_1ukek"]
 [ext_resource type="AudioStream" uid="uid://dvtcwy5w1logl" path="res://assets/sounds/gmtk2023.mp3" id="11_s5b33"]
+[ext_resource type="AudioStream" uid="uid://cprdsu6ehhdub" path="res://assets/sounds/click.wav" id="12_8feew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_slj7v"]
 size = Vector2(120, 180)
@@ -94,3 +95,8 @@ stream = ExtResource("11_s5b33")
 autoplay = true
 panning_strength = 0.0
 bus = &"Music"
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_8feew")
+volume_db = 9.0
+panning_strength = 0.0

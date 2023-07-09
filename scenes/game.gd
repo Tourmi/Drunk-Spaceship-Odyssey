@@ -6,6 +6,7 @@ extends Node2D
 @onready var camera := $Camera2D as Camera
 @onready var fadeout := %Fadeout as Fadeout
 @onready var music := $music as AudioStreamPlayer2D
+@onready var click := $ClickSound as AudioStreamPlayer2D
 
 var line_draw := 0
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	Globals.bullet_spawn = $Bullets as Node
 	Globals.game_bounds = game_bounds
 	Globals.camera = camera
+	Globals.click = click
 
 var inited := false
 var is_fading := false

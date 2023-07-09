@@ -5,12 +5,13 @@ var bullet_spawn : Node
 var hero : Hero
 var game_bounds : Area2D
 var camera : Camera
+var click : AudioStreamPlayer2D
 
 var score = 0
 var difficulty := 1.0
 
 func _process(delta: float) -> void:
-	difficulty += 0.01 * delta
+	difficulty += 0.011 * delta
 
 func reset() -> void:
 	score = 0

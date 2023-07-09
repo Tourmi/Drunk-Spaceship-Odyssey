@@ -20,18 +20,18 @@ score = 100
 texture = ExtResource("2_20jg2")
 
 [node name="Enemy_AI_Component" parent="." index="1"]
-firerate = 0.25
+firerate = 0.2
 
 [node name="Health_Component" parent="." index="2"]
-max_health = 50
-current_health = 50
+max_health = 20
+current_health = 20
 
 [node name="Shooter_Component" parent="." index="3"]
 damage = 10
 min_speed = 20.0
 max_speed = 40.0
 random_spread = 0.15
-count = 2
+count = 3
 
 [node name="RegularDrops" parent="." index="8"]
 base_odds_numerator = 50

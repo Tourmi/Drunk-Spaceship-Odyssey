@@ -6,6 +6,7 @@ signal fade_ended
 @onready var restart_button := $Button as Button
 @onready var main_menu := $"Main Menu" as Button
 @onready var score := $Score as Control
+@onready var helmet := $Helmet as TextureRect
 
 var target_color : Color
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	visible = false
 	score.visible = false
 	restart_button.visible = false
+	helmet.visible = false
 	main_menu.visible = false
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	pass # Replace with function body.
@@ -40,8 +42,11 @@ func _on_fade_ended() -> void:
 	score.visible = true
 	main_menu.visible = true
 	restart_button.visible = true
+	helmet.visible = true
 
 
 func _on_main_menu_pressed() -> void:
+	Globals.click.play()
+	await Globals.click.finished
 	Globals.reset()
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")

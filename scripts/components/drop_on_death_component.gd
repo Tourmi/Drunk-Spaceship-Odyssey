@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_health_expired() -> void:
 	if to_spawn.size() == 0: return
-	var odds := (base_odds_numerator + Globals.get_multiplier()) / (base_odds_denominator + Globals.get_multiplier())
+	var odds := base_odds_numerator / float(base_odds_denominator)
 	if not is_guaranteed and randf() >= odds:
 		return
 	if is_picked: _spawn_entity(to_spawn[randi() % to_spawn.size()])

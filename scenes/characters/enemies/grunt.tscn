@@ -55,10 +55,11 @@ _data = {
 enemy_name = "grunt"
 speed = 40.0
 score = 10
+health_growth = 2.0
 
 [node name="Health_Component" parent="." index="2"]
-max_health = 50
-current_health = 50
+max_health = 20
+current_health = 20
 
 [node name="Shooter_Component" parent="." index="3"]
 damage = 80
