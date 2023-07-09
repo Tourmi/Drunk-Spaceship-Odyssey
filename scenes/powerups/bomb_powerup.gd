@@ -1,3 +1,4 @@
+class_name BombPickup
 extends Powerup
 
 func pickup() -> void:

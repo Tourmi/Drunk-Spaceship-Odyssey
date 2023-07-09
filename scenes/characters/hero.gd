@@ -7,12 +7,13 @@ const time_ahead := 0.1
 const max_dist := 25
 const target_dist_from_walls := 20
 
-const RANDOM_DIR_INFLUENCE := 5
+const RANDOM_DIR_INFLUENCE := 4
 const AVOID_BULLETS_INFLUENCE := 20
-const AVOID_ENEMIES_INFLUENCE := 10
-const AVOID_WALLS_INFLUENCE := 12
+const AVOID_ENEMIES_INFLUENCE := 15
+const AVOID_WALLS_INFLUENCE := 8
 const POWERUP_INFLUENCE := 15
 const DOWN_BIAS_INFLUENCE := 10
+const CENTER_BIAS_INFLUENCE := 3
 
 @export var bomb_cooldown := 3.0
 @export var min_bullet_distance := 100
@@ -51,6 +52,7 @@ func _process(delta: float) -> void:
 	calc += _get_avoid_walls_direction() * AVOID_WALLS_INFLUENCE
 	calc += _get_direction_to_powerup() * POWERUP_INFLUENCE
 	calc += _get_down_bias() * DOWN_BIAS_INFLUENCE
+	calc += _get_center_bias() * CENTER_BIAS_INFLUENCE
 
 	wanted_direction = (wanted_direction * 2 + calc.normalized()).normalized()
 
@@ -142,6 +144,11 @@ func _should_ignore_powerup(powerup : Powerup) -> bool:
 
 func _get_down_bias() -> Vector2:
 	if position.y < 100: return Vector2(0, 1)
+	return Vector2()
+
+func _get_center_bias() -> Vector2:
+	if position.x < 130: return Vector2(1, 0)
+	if position.x > 190: return Vector2(-1, 0)
 	return Vector2()
 
 func _set_bombs(amount : int) -> void:
