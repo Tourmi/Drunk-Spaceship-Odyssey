@@ -15,7 +15,7 @@ growth_decrease = 64.0
 
 [node name="Outer" type="Area2D" parent="."]
 collision_layer = 128
-collision_mask = 6
+collision_mask = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Outer"]
 shape = SubResource("CircleShape2D_57lvk")

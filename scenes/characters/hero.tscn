@@ -125,7 +125,8 @@ volume_db = -12.0
 
 [node name="OutOfFuel" type="AudioStreamPlayer2D" parent="FuelComponent"]
 stream = ExtResource("15_2ikxx")
-volume_db = -12.0
+volume_db = -18.0
+panning_strength = 0.66
 
 [node name="PowerupSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_ooarr")

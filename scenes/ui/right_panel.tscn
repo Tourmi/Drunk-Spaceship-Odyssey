@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c70l28kl2we5q"]
+[gd_scene load_steps=13 format=3 uid="uid://c70l28kl2we5q"]
 
 [ext_resource type="PackedScene" uid="uid://dqxju1ulw2ldk" path="res://scenes/ui/spawn_button.tscn" id="1_81mvk"]
 [ext_resource type="Script" path="res://scenes/ui/right_panel.gd" id="1_osc8y"]
 [ext_resource type="Resource" uid="uid://cwx8favobo0pa" path="res://resources/wave_list.tres" id="2_6pui7"]
 [ext_resource type="Texture2D" uid="uid://c5jfjl4von3hq" path="res://assets/rightlayout.png" id="4_qh574"]
+[ext_resource type="Theme" uid="uid://biwcsmriid58k" path="res://theme.tres" id="5_soh35"]
+[ext_resource type="Script" path="res://scenes/ui/mute_music.gd" id="6_3ev4q"]
+[ext_resource type="Script" path="res://scenes/ui/mute_sounds.gd" id="7_rxjc4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqlsm"]
 atlas = ExtResource("4_qh574")
@@ -106,6 +109,29 @@ layout_mode = 2
 [node name="EnemyButtons" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_soh35")
+toggle_mode = true
+text = "Mute music"
+script = ExtResource("6_3ev4q")
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("5_soh35")
+toggle_mode = true
+text = "Mute all"
+text_overrun_behavior = 1
+script = ExtResource("7_rxjc4")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "regular"
 speed_scale = 2.0
@@ -115,8 +141,13 @@ libraries = {
 next/steam = &"regular"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" to="MarginContainer/VBoxContainer/EnemyButtons/SpawnButton" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@363487" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@363487" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@363488" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@363488" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@363489" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@363489" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@363490" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@363490" method="_on_pressed" flags=18]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@363491" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@363491" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28569" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28569" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28570" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28570" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28571" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28571" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28572" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28572" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28573" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28573" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28574" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28574" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28575" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28575" method="_on_pressed" flags=18]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EnemyButtons/@Button@28576" to="MarginContainer/VBoxContainer/EnemyButtons/@Button@28576" method="_on_pressed" flags=18]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/Button" method="_on_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Button2" to="MarginContainer/VBoxContainer/Button2" method="_on_toggled"]

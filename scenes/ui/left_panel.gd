@@ -14,8 +14,8 @@ extends PanelContainer
 var inited := false
 
 func _process(delta: float) -> void:
-	multiplier.text = "Mult:%.2f" % Globals.get_multiplier()
-	difficulty.text = "Diff:%.2f" % (Globals.get_difficulty() + 1)
+	multiplier.text = "Multiplier:%.2f" % Globals.get_multiplier()
+	difficulty.text = "Difficulty:%.2f" % (Globals.get_difficulty() + 1)
 	score.text = "Score\n%0000000d" % Globals.score
 	if Globals.hero == null: return
 	hero_health.max_value = Globals.hero.health_component.max_health

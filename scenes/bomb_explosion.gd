@@ -42,6 +42,8 @@ func _draw() -> void:
 func _on_outer_body_entered(body: Node2D) -> void:
 	if body is Bullet and not (body as Bullet).is_hero:
 		body.queue_free()
+	if body is Powerup:
+		body.queue_free()
 
 func _on_outer_area_entered(area: Area2D) -> void:
 	if not area.get_parent() is Enemy: return

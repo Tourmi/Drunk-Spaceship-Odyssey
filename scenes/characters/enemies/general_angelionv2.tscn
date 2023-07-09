@@ -50,7 +50,7 @@ _data = {
 }
 
 [node name="Enemy" instance=ExtResource("1_vn71s")]
-score = 100
+score = 250
 health_growth = 3.0
 bullet_speed_growth = 1.0
 bullet_count_growth = 0.2
@@ -72,8 +72,8 @@ position = Vector2(5, 0)
 damage = 50
 min_speed = 20.0
 max_speed = 20.0
-count = 7
-even_spread = 0.5
+count = 9
+even_spread = 1.0
 
 [node name="AnimationPlayer" parent="." index="6"]
 autoplay = "regular"

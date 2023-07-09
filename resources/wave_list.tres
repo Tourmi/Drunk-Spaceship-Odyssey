@@ -10,4 +10,4 @@
 
 [resource]
 script = ExtResource("1_mo706")
-waves = Array[Resource("res://scripts/resources/wave.gd")]([ExtResource("2_u8vmg"), ExtResource("3_wg3nw"), ExtResource("4_76vhj"), ExtResource("5_5d0se"), ExtResource("6_8q1fl"), ExtResource("7_0pysv")])
+waves = Array[Resource("res://scripts/resources/wave.gd")]([ExtResource("2_u8vmg"), ExtResource("3_wg3nw"), ExtResource("4_76vhj"), ExtResource("5_5d0se"), ExtResource("6_8q1fl"), ExtResource("7_0pysv"), ExtResource("2_u8vmg"), ExtResource("3_wg3nw"), ExtResource("4_76vhj")])

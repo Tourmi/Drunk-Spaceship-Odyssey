@@ -1,0 +1,159 @@
+[gd_scene load_steps=7 format=3 uid="uid://beer7a4p2r77f"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_h2rvq"]
+[ext_resource type="Script" path="res://scenes/ui/load_game_button.gd" id="1_m07hg"]
+[ext_resource type="Texture2D" uid="uid://m7ryex8d4kw3" path="res://assets/tutorial_screens/turorial_screen.png" id="2_bp5p1"]
+[ext_resource type="PackedScene" uid="uid://bsm4xxapgoqqm" path="res://scenes/background.tscn" id="2_e8abg"]
+[ext_resource type="Theme" uid="uid://biwcsmriid58k" path="res://theme.tres" id="4_p81fa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d00d"]
+atlas = ExtResource("2_bp5p1")
+region = Rect2(0, 0, 320, 180)
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+script = ExtResource("1_h2rvq")
+
+[node name="Background" parent="." instance=ExtResource("2_e8abg")]
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="StartGame" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -82.0
+offset_right = 78.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Game"
+script = ExtResource("1_m07hg")
+
+[node name="Tutorial" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -55.0
+offset_right = 78.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Tutorial"
+
+[node name="Credits" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -28.0
+offset_right = 78.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "   Credits  "
+
+[node name="TutorialScreens" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0d00d")
+
+[node name="Next" type="Button" parent="TutorialScreens"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -27.0
+offset_right = 50.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Next"
+
+[node name="Lore" type="Label" parent="TutorialScreens"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 314.0
+offset_bottom = 149.0
+theme = ExtResource("4_p81fa")
+text = "You are an AI helping your drunk pilot get through hyperspace. While you may not have access to the controls, you can lure nearby enemies to help your pilot fuel up and upgrade the ship.
+
+Make sure not to overwhelm them!"
+autowrap_mode = 3
+
+[node name="CreditsControl" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" parent="CreditsControl" instance=ExtResource("2_e8abg")]
+self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
+
+[node name="Return" type="Button" parent="CreditsControl"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -23.0
+offset_right = 21.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Return"
+
+[node name="Label" type="Label" parent="CreditsControl"]
+texture_filter = 1
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 315.0
+offset_bottom = 155.0
+text = "This game was a result of the GMTK Game Jam 2023
+
+Made with love by
+ - Tourmi
+ - Sapheu"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 157.0
+offset_bottom = 32.0
+theme = ExtResource("4_p81fa")
+theme_override_font_sizes/font_size = 16
+text = "Drunk Spaceship Odyssey"
+
+[connection signal="pressed" from="StartGame" to="StartGame" method="_on_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="TutorialScreens/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="CreditsControl/Return" to="." method="_on_return_pressed"]

@@ -3,10 +3,16 @@ extends TextureRect
 
 signal fade_ended
 
+@onready var restart_button := $Button as Button
+@onready var score := $Score as Control
+
 var target_color : Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	visible = false
+	score.visible = false
+	restart_button.visible = false
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	pass # Replace with function body.
 
@@ -21,7 +27,13 @@ func fadeout() -> void:
 	self_modulate.a = 0
 	visible = true
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "self_modulate", self_modulate, 1)
-	tween.tween_property(self, "self_modulate", target_color, 3)
+	tween.tween_property(self, "self_modulate", self_modulate, 1.0)
+	tween.tween_property(self, "self_modulate", target_color, 1.5)
+	tween.tween_property(self, "self_modulate", target_color, 0.1)
 	await tween.finished
 	fade_ended.emit()
+
+
+func _on_fade_ended() -> void:
+	score.visible = true
+	restart_button.visible = true

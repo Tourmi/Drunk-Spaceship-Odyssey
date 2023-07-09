@@ -16,4 +16,4 @@ time_between_enemies = 1.0
 cooldown = 30.0
 wave_icon = ExtResource("6_gcboa")
 time_between_enemies_growth = 0.0
-enemy_count_growth = 0
+enemy_count_growth = 0.0
