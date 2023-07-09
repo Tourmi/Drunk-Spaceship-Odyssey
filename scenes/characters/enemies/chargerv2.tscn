@@ -99,6 +99,6 @@ health_component = NodePath("../Health_Component")
 
 [node name="RegularDrops" parent="." index="9"]
 base_odds_numerator = 25
-to_spawn = Array[PackedScene]([ExtResource("12_j7r4v"), ExtResource("13_q0nty"), ExtResource("13_q0nty"), ExtResource("13_q0nty")])
+to_spawn = Array[PackedScene]([ExtResource("12_j7r4v"), ExtResource("13_q0nty"), ExtResource("13_q0nty")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]

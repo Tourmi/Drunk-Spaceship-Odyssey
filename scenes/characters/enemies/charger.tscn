@@ -94,6 +94,6 @@ to_spawn = Array[PackedScene]([ExtResource("5_74tqi"), ExtResource("6_0t2p4"), E
 health_component = NodePath("../Health_Component")
 
 [node name="RegularDrops" parent="." index="9"]
-to_spawn = Array[PackedScene]([ExtResource("12_xr1sl"), ExtResource("13_eq8ee"), ExtResource("13_eq8ee"), ExtResource("13_eq8ee")])
+to_spawn = Array[PackedScene]([ExtResource("12_xr1sl"), ExtResource("13_eq8ee"), ExtResource("13_eq8ee")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="10"]

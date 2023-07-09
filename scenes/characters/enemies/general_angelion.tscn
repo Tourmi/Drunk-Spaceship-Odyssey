@@ -91,4 +91,4 @@ health_component = NodePath("../Health_Component")
 
 [node name="RegularDrops" parent="." index="9"]
 is_guaranteed = true
-to_spawn = Array[PackedScene]([ExtResource("11_emxqm"), ExtResource("12_kiv8y"), ExtResource("12_kiv8y"), ExtResource("12_kiv8y")])
+to_spawn = Array[PackedScene]([ExtResource("11_emxqm"), ExtResource("12_kiv8y"), ExtResource("12_kiv8y")])
